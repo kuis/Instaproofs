@@ -1,0 +1,20 @@
+.event-category
+  .heading
+    //- a.label(href="#categories/"+ model.id)
+    .line
+    .label(data-hook='category-name')= model && model.name
+    .line
+      //- small= 'View all '+ model.img_count +' images'
+  a.category-slideshow Slideshow
+  .photos
+  .load-more
+    .label Show More Images
+    .loader
+  //- .heading.siblings
+    a.label(data-hook='prev-category')
+      span
+      small Previous Category
+    .line
+    a.label(data-hook='next-category')
+      span
+      small Next Category

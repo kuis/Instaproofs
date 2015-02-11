@@ -1,0 +1,3 @@
+each cat in categories
+  a(href= cat.app_url +'/'+ cat.prod_list.at(0).id,
+    class= cat === active ? 'active' : '')= cat.name

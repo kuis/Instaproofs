@@ -1,0 +1,12 @@
+- var event = model && model.collection.parent;
+- var prev = model && model.prev;
+- var next = model && model.next;
+.fixed-footer.event-category: .content
+  a.prev(data-hook='prev-category', class= !prev ? 'hidden' : null,
+      href= prev ? '#events/'+ event.id +'/'+ prev.id : null
+      )
+    span= model && model.prev && model.prev.name
+  a.next(data-hook='next-category', class= !next ? 'hidden' : null,
+      href= next ? '#events/'+ event.id +'/'+ next.id : null
+      )
+    span= model && model.next && model.next.name

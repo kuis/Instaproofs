@@ -1,0 +1,85 @@
+doctype html
+html(lang='en', class="light-mode")
+  head
+    title Instaproofs Webstore
+    
+    meta(charset='utf-8')
+    meta(name='viewport', 
+         content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
+    meta(name='apple-mobile-web-app-capable', content='yes')
+    meta(name='apple-mobile-web-app-status-bar-style', content='black-translucent')
+      
+    link(rel='apple-touch-icon', href='img/icon.png')
+    link(rel='shortcut icon', href='img/icon.png')
+    link(rel='icon', href='img/icon.png')
+      
+    link(rel='stylesheet', href='css/combined.css')
+      
+    <!--[if lt IE 10]>
+    <script>window.ie9 = true;</script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/classlist/2014.01.31/classList.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/ie9.css">
+    <![endif]-->
+    
+  body
+    nav
+    main
+    #footer.hidden
+    #lightbox
+      .slides
+      .slideshow-controls
+        .toggle-slideshow: .text Slideshow
+        .controls-wrapper: .controls
+          .slideshow-speed
+            .slider: .fill
+            .nob
+            .text 5 sec.
+          .toggle-music 
+            .status: .loading
+            span Music
+            
+        //- .right-edge
+      .prev
+      .next
+      .top-right
+        .categories
+        .category
+        .count
+        .toggle-fullscreen
+        .close
+      audio(loop)
+    #splash
+      .head
+      #splash-image.image
+        .label
+        .loader.white
+        .prompt: span
+    script.
+      if (window.localStorage) {
+        if (localStorage.skipSplash !== '1') {
+          var imgList = [1,14,19,2,3,4,5,6,15,7,16,8,9,10,17,18,12];
+          document.documentElement.className = 'locked';
+          var hash = document.location.hash.replace(/^#/, '');
+          var image = document.getElementById('splash-image');
+          var m = hash.match(/^events\/(\d+)/i);
+          var path = '/img/splash/';
+          var ss = Math.max(screen.height, screen.width);
+          if (ss < 1500) {
+            path += (ss > 1365 ? 1366 : ss > 1023 ? 1024 : 
+                     ss > 799 ? 800 : 600) + '/';
+          }
+          if (m) {
+            document.getElementById('splash').classList.add('event');
+            var i = ((+m[1] - 1) % 17);
+            path += 'img'+ imgList[i] +'.jpg';
+          }
+          else {
+            path += 'global.jpg';
+          }
+          image.style.backgroundImage = 'url('+ path +')';
+          //- document.getElementById('splash').style.display = 'block';  
+        }
+      }
+        
+      
+    script(src='js/app.js')

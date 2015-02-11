@@ -1,0 +1,25 @@
+//- - for (var i=0;i<1;i++) model.name += ' Image Title Lorem Ipsum';
+- var app = require('app');
+- var nl = model.name.length;
+- var titleClass = nl >= 35 ? 'long-'+ Math.min(10, Math.floor((nl-25) / 10)) : '';
+.lightbox-photo
+  //- .small-image(style="background-image:url("+ model.thumb_url +")")
+  .images
+    //- .large-image(style="background-image:url("+ model.url +")")
+    //- .title.fake(class= titleClass): .text= model.name
+    .img
+      .loader.white
+      if app.loadedImages[model.thumb_url]
+        //- - console.log('including thumb');
+        .thumb(style="background-image:url("+ model.thumb_url +")")
+      //- .full-img(style="background-image:url("+ model.url +")")
+      img(src= model.url)
+      .borders
+    if model.name
+      .title(class= titleClass): .text= model.name 
+  .actions
+    .icon.cart: .tip Buy Image
+    .icon.fav: .tip Add To Favorites
+    if model.download
+      a.icon.download(href= model.url, target="_blank", bypass): .tip Download
+    .icon.share: .tip Share

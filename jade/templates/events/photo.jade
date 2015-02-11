@@ -1,0 +1,19 @@
+.grid-photo
+  .image
+    //- img(src= model.thumb_url)
+  //- .image(style="background-image:url("+ model.thumb_url +")")
+  .fill.borders
+  .overlay
+    a.view-large(href= model.app_url)
+      span View Larger Image
+    .icons
+      .icon.cart: .tip Buy
+      //- .icon.cart: .tip Buy More
+      .icon.fav: .tip To Favorites
+      //- .icon.fav: .tip Unfavorite
+      if model.download
+        a.icon.download(href= model.url, target="_blank", bypass): .tip Download
+      //- .icon.hide: .tip Hide Image
+      .icon.share: .tip Share
+  //- .image
+  

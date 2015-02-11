@@ -1,0 +1,287 @@
+/*==========================================================================*\
+  Fullscreen Splash image 
+\*==========================================================================*/
+
+#splash {
+  display: none;
+  transform: translate3d(0, 0, 0); 
+  transition: transform 300ms ease-out;
+  html.locked & { 
+    display: block; 
+    transform: translate3d(0, 0, 0); 
+  }
+  html.unlocked & {
+    display: block;
+    transform: translate3d(0, -100%, 0); 
+    transition: transform 400ms ease-out;
+  }
+  html.locked.desktop-ua &, html.unlocked.desktop-ua & {
+    transition: transform 800ms ease-in;
+  }
+  html.unlocked.desktop-ua & {
+    transition: transform 800ms ease-in;
+    transform: translate3d(0, -180%, 0);
+  }
+  
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 10000;
+  
+  background: @black;
+  // background: url(/img/splash.jpg) center center/cover no-repeat @white;
+  
+  .loading {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -32px;
+  }
+  
+  > .head, > .foot {
+    height: 100px;
+    width: 100%;
+    background: @white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .head {
+    background: url(/img/logo-light.png) center center/auto 51px no-repeat @black;
+    @media (max-width: 450px) {
+      height: 50px;
+      background-size: auto 25px;
+    }
+  }
+  .foot {
+    display: none;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    // background: rgba(255,255,255,1);
+  }
+  > .image {
+    position: absolute;
+    top: 100px;
+    @media (max-width: 450px) { top: 50px; }
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url(/img/splash.jpg) center center no-repeat @black;
+    background-size: cover;
+    
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    
+    // box-shadow: inset 0 0 0 1px rgba(100,100,100,0.2);
+    // box-shadow: inset 0 1px 0 0 rgba(100,100,100,0.2),
+    //             inset 0 -1px 0 0 rgba(100,100,100,0.2);
+    
+  }
+  .loader {
+    transition: transform 300ms, opacity 300ms;
+    
+    top: auto;
+    bottom: 40px;
+    // bottom: 20px;
+    &:before {
+      // border: none;
+      background: rgba(0,0,0,0.5);
+    }
+    &:after {
+      // border-color: @black;
+    }
+  }
+  
+  
+  /*==========================================================================*\
+    A large label in the middle with event's info
+  \*==========================================================================*/
+  .label {
+    min-width: 450px;
+    max-width: 92%;
+    @media (max-width: 500px) {
+      min-width: 60%;
+      max-width: 90%;
+    }
+    background: rgba(255,255,255,0.8);
+    background-clip: content-box;
+    box-sizing: border-box;
+    padding: 14px;
+    border: rgba(255,255,255,0.8) 1px solid;
+    margin-bottom: 4%;
+    transform: translate3d(0,20px,0);
+    opacity: 0;
+    transition: opacity 400ms, transform 400ms;
+    
+    text-align: center;
+    
+    > h1, .date, .type {
+      padding: 0 50px;
+    }
+    > h1 {
+      font: 300 2.5em/1.2 @oswald;
+      text-transform: uppercase;
+      margin-top: 1.5em;
+      margin-bottom: .15em;
+    }
+    
+    > .date {
+      font: 300 1.375em/1.3 @sans;
+      margin: 0 0 .5em;
+    }
+    
+    > .type {
+      font: 400 1em/1.4 @sans;
+      text-transform: uppercase;
+      // margin-bottom: 2.5em;
+    }
+    
+    > .arrow {
+      font: normal 13px/1 @sans;
+      text-transform: uppercase;
+      margin: 1.5em auto 2em;
+      &:after, &:before {
+        color: #444;
+        font-size: 18px;
+        width: 30px;
+        text-align: center;
+        // display: block !important;
+        // margin: 0 auto;
+      }
+      .desktop-ua & {
+        &:after {
+          &:extend(.icon);
+          &:extend(.icon.angle-double-down);
+        }
+      }
+      .mobile-ua & {
+        &:before {
+          &:extend(.icon);
+          &:extend(.icon.angle-double-up);
+        }
+      }
+      
+    }
+  }
+
+  /*==========================================================================*\
+    A slide/scroll prompt
+  \*==========================================================================*/
+  .prompt {
+    opacity: 0;
+    transform: translate3d(0, 140px, 0);
+    transition: transform 300ms, opacity 300ms;
+    
+    position: absolute;
+    left: 50%;
+    bottom: 40px;
+    
+    width: 100px;
+    height: 100px;
+    margin-left: -50px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255,255,255,0.8);
+      background-clip: content-box;
+      padding: 5px;
+      border: rgba(255,255,255,0.8) 1px solid;
+      
+      transform: rotate(45deg);
+      transform-origin: center center;
+    }
+    
+    &:after {
+      &:extend(.icon);
+      &:extend(.icon.angle-double-down);
+      position: absolute;
+      color: #444;
+      bottom: 16px;
+      left: 50%;
+      font-size: 18px;
+      width: 30px;
+      margin-left: -15px;
+      text-align: center;
+      
+      .mobile-ua & {
+        &:extend(.icon.angle-double-up);
+        bottom: auto;
+        top: 25px;
+      }
+    }
+    
+    > div {
+      z-index: 2;
+      &:before {
+        &:extend(.icon);
+        &:extend(.icon.mouse);
+        position: absolute;
+        top: 9px;
+        left: 50%;
+        font-size: 24px;
+        width: 30px;
+        margin-left: -15px;
+        text-align: center;
+        .mobile-ua & {
+          display: none;
+        }
+      }
+      .mobile-ua & {
+        margin-top: 17px;
+      }
+    }
+    
+    span {
+      display: block;
+      
+      font: normal 13px/1 @sans;
+      text-transform: uppercase;
+      margin: 10px 0;
+    }
+    
+    > .loader {
+      top: 50%;
+      margin-top: -30px;
+      &:before {
+        background: none;
+      }
+    }
+  }
+  
+  &.loaded {
+    .prompt {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+    .loader {
+      opacity: 0;
+      transform: translate3d(0, 140px, 0);
+    }
+    
+    &.event {
+      .prompt { 
+        opacity: 0; 
+        transform: translate3d(0, 140px, 0); 
+      }
+      .label {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+    }
+  }
+}
