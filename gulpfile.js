@@ -9,6 +9,9 @@ var gulpif = require('gulp-if');
 var jade = require('gulp-jade');
 var less = require('gulp-less');
 var livereload = require('gulp-livereload');
+var lrHost; // host for the injected LR script to look for LR server at 
+try { lrHost = require('./live-reload-host'); }
+catch (e) { lrHost = 'localhost'; }
 var path = require('path');
 var prefix = require('gulp-autoprefixer');
 var serve = require('gulp-serve');
@@ -116,8 +119,7 @@ gulp.task('watch', function() { // watch and build
 gulp.task('serve', serve({
   root: 'build/dev',
   middleware: require('connect-livereload')({
-    // src: 'http://localhost:35729/livereload.js?snipver=1'
-    src: 'http://imac.local:35729/livereload.js?snipver=1'
+    src: 'http://'+ (lrHost || 'localhost') +':35729/livereload.js?snipver=1'
   }),
 }));
 
