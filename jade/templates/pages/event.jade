@@ -7,8 +7,8 @@
         .header
           h1(data-hook='event-name')= model.name
           .page-path 
-            span.wide-only #{language.elm[16]}:
-            a(href="#") #{language.elm[17]}
+            span.wide-only #{language.elm['You are here']}:
+            a(href="#") #{language.elm['Home']}
             span &gt;
             if pageType === 'event'
               span(data-hook='event-name')= model.name
@@ -20,7 +20,7 @@
         .events-group
           .categories.group-events
           .header
-            h1 #{language.elm[18]}
+            h1 #{language.elm['Products']}
           .products.group-events
   .page-footer  
   //- include ../footer.jade

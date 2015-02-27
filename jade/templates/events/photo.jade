@@ -5,15 +5,15 @@
   .fill.borders
   .overlay
     a.view-large(href= model.app_url)
-      span #{language.elm[7]}
+      span #{language.elm['View Larger Image']}
     .icons
-      .icon.cart: .tip #{language.elm[8]}
-      //- .icon.cart: .tip #{language.elm[39]}
-      .icon.fav: .tip #{language.elm[38]}
-      //- .icon.fav: .tip #{language.elm[37]}
+      .icon.cart: .tip #{language.elm['Buy']}
+      //- .icon.cart: .tip #{language.elm['Buy More']}
+      .icon.fav: .tip #{language.elm['To Favorites']}
+      //- .icon.fav: .tip #{language.elm['Unfavorite']}
       if model.download
         a.icon.download(href= model.url, target="_blank", bypass): .tip Download
-      //- .icon.hide: .tip #{language.elm[36]}
-      .icon.share: .tip  #{language.elm[11]}
+      //- .icon.hide: .tip #{language.elm['Hide Image']}
+      .icon.share: .tip  #{language.elm['Share']}
   //- .image
   
