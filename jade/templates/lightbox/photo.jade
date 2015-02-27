@@ -18,8 +18,8 @@
     if model.name
       .title(class= titleClass): .text= model.name 
   .actions
-    .icon.cart: .tip Buy Image
-    .icon.fav: .tip Add To Favorites
+    .icon.cart: .tip  #{language.elm[12]}
+    .icon.fav: .tip  #{language.elm[13]}
     if model.download
-      a.icon.download(href= model.url, target="_blank", bypass): .tip Download
-    .icon.share: .tip Share
+      a.icon.download(href= model.url, target="_blank", bypass): .tip  #{language.elm[10]}
+    .icon.share: .tip  #{language.elm[11]}

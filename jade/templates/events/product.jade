@@ -5,16 +5,16 @@
     .label(data-hook='product-name')= model && model.name
     .line
       //- small= 'View all '+ model.img_count +' images'
-  a.product-slideshow Slideshow
+  a.product-slideshow  #{language.elm[5]}
   .photos
   .load-more
-    .label Show More Images
+    .label  #{language.elm[6]}
     .loader
   //- .heading.siblings
     a.label(data-hook='prev-product')
       span
-      small Previous Product
+      small  #{language.elm[34]}
     .line
     a.label(data-hook='next-product')
       span
-      small Next Product
+      small  #{language.elm[35]}
