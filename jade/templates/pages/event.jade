@@ -1,14 +1,14 @@
 .page.event.inactive(
     class= pageType === 'event-category' ? 'category' : ''
-    ): .page-scroller: .page-scroll
+    ): .page-scroller: .page-scroll   
   .page-content
     .content 
       if model
         .header
           h1(data-hook='event-name')= model.name
           .page-path 
-            span.wide-only You are here:
-            a(href="#") Home
+            span.wide-only #{language.elm['You are here']}:
+            a(href="#") #{language.elm['Home']}
             span &gt;
             if pageType === 'event'
               span(data-hook='event-name')= model.name
@@ -19,5 +19,8 @@
           
         .events-group
           .categories.group-events
+          .header
+            h1 #{language.elm['Products']}
+          .products.group-events
   .page-footer  
   //- include ../footer.jade

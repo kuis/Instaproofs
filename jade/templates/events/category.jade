@@ -5,16 +5,16 @@
     .label(data-hook='category-name')= model && model.name
     .line
       //- small= 'View all '+ model.img_count +' images'
-  a.category-slideshow Slideshow
+  a.category-slideshow #{language.elm['Slideshow']}
   .photos
   .load-more
-    .label Show More Images
+    .label #{language.elm['Show More Images']}
     .loader
   //- .heading.siblings
     a.label(data-hook='prev-category')
       span
-      small Previous Category
+      small #{language.elm['Previous Category']}
     .line
     a.label(data-hook='next-category')
       span
-      small Next Category
+      small #{language.elm['Next Category']}

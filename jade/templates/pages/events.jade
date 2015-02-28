@@ -3,22 +3,22 @@
     .content 
       .header
         .filters: .inner
-          a.showcased(href="#", data-filter="showcased") Showcased<i> Events</i>
-          a.current(href="#", data-filter="current") Current
-          a.upcoming(href="#", data-filter="upcoming") Upcoming
-          a.all.active(href="#", data-filter="all") All<i class="all"> Events</i>
+          a.showcased(href="#", data-filter="showcased") #{language.elm['Showcased']}<i> #{language.elm['Events']}</i>
+          a.current(href="#", data-filter="current") #{language.elm['Current']}
+          a.upcoming(href="#", data-filter="upcoming") #{language.elm['Upcoming']}
+          a.all.active(href="#", data-filter="all") #{language.elm['All']}<i class="all"> #{language.elm['Events']}</i>
         .sorting: .inner
           span Sort events by:
-          a.name(href="#", data-sort="name") <i>Event </i>Name
-          a.date.active(href="#", data-sort="date") <i>Event </i>Date
-          a.type(href="#", data-sort="type") <i>Event </i>Type
+          a.name(href="#", data-sort="name") <i>#{language.elm['Event']} </i>#{language.elm['Name']}
+          a.date.active(href="#", data-sort="date") <i>#{language.elm['Event']} </i>#{language.elm['Date']}
+          a.type(href="#", data-sort="type") <i>#{language.elm['Event']} </i>#{language.elm['Type']}
         .clear
         .label
           .icon
           .loader.grey-bg
       .events-list
       .load-more
-        .label Load More Events
+        .label #{language.elm['Load More Events']}
         .loader
         
   .page-footer

@@ -1,0 +1,20 @@
+.event-product
+  .heading
+    //- a.label(href="#product/"+ model.id)
+    .line
+    .label(data-hook='product-name')= model && model.name
+    .line
+      //- small= 'View all '+ model.img_count +' images'
+  a.product-slideshow  #{language.elm['Slideshow']}
+  .photos
+  .load-more
+    .label  #{language.elm['Show More Images']}
+    .loader
+  //- .heading.siblings
+    a.label(data-hook='prev-product')
+      span
+      small  #{language.elm['Previous Product']}
+    .line
+    a.label(data-hook='next-product')
+      span
+      small  #{language.elm['Next Product']}
