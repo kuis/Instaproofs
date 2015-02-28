@@ -13,13 +13,16 @@
         //- - console.log('including thumb');
         .thumb(style="background-image:url("+ model.thumb_url +")")
       //- .full-img(style="background-image:url("+ model.url +")")
-      img(src= model.url)
+      img(src= model.img_url)
       .borders
     if model.name
       .title(class= titleClass): .text= model.name 
   .actions
-    .icon.cart: .tip Buy Image
-    .icon.fav: .tip Add To Favorites
+    .action.cart: .tip Buy Image
+    .action.fav: .tip Add To Favorites
     if model.download
-      a.icon.download(href= model.url, target="_blank", bypass): .tip Download
-    .icon.share: .tip Share
+      a.action.download(href= model.url, target="_blank", bypass): .tip Download
+    .action.share: .tip Share
+    .action.variants: .tip Variants
+  //- .buy-form
+    

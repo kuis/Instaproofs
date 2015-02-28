@@ -1,0 +1,78 @@
+.purchase-addon-options {
+  .header {
+    padding: 15px;
+    font: normal 1.2em/1.4 @sans;
+    white-space: nowrap;
+    text-transform: uppercase;
+    display: block;
+    text-align: center;
+  }
+  
+  > .options {
+    padding-bottom: 10px;
+  }
+  
+  
+}
+
+.purchase-addon-option {
+  cursor: pointer;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  
+  .desktop-ua &:hover {
+    background: rgba(0,0,0,.05);
+  }
+  
+  .text {
+    // flex-grow: 1;
+    
+    .checkbox { // no-qty addons
+      display: inline;
+      text-align: center;
+      box-sizing: border-box;
+      margin-right: 5px;
+      
+      &:after {
+        &:extend(.icon);
+        &:extend(.icon.checkbox-unchecked);
+        display: inline-block;
+        font-size: 16px;
+        line-height: 30px;
+        // vertical-align: 1px;
+      }
+      
+      .selected&:after {
+        &:extend(.icon.checkbox);
+      }
+    }
+    
+    .title {
+      font: bold 1em/1.4 @sans;
+      .selected& {
+        color: @highlighted;
+      }
+    }
+    .description {
+      forn: normal 1em/1.3 @sans;
+    }
+  }
+  .image-container {
+    flex-grow: 2;
+    width: 150px;
+    min-width: 150px;
+    height: 100px;
+    margin-left: 15px;
+    box-shadow: inset 0 0 0 1px rgba(100,100,100,0.2);
+    background-position: center;
+    background-size: cover;
+    
+    > img {
+      display: block;
+      width: 150px;
+      height: 100px;
+    }
+  }
+}

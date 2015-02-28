@@ -2,7 +2,8 @@
 - if (model.showcase) classes.push('showcased');
 - if (model.locked) classes.push('locked');
   
-- var imageURL = "/img/pics/thumbs/"+ (model.locked ? 'blur/' : '') + model.img;
+//- - var imageURL = "/img/pics/thumbs/"+ (model.locked ? 'blur/' : '') + model.img;
+- var imageURL = model.locked ? model.thumb_blur_url : model.thumb_url;
 
 - var nl = model.name.length;
 - var titleClass = nl >= 25 ? 'long-'+ Math.min(10, Math.floor((nl-25) / 10)) : '';

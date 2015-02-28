@@ -1,0 +1,11 @@
+- var ua = require('app/utils/ua');
+- var classes = [];
+- if (model.options) classes.push('no-qty');
+.purchase-addon(class=classes)
+  if model.options.length
+    .expand
+    .name= model.default_option.name
+  else
+    .checkbox
+    .name= model.name
+  .price.single= model.display_price

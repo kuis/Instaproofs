@@ -1,0 +1,70 @@
+/*==========================================================================*\
+  Previous and Next slide buttons
+\*==========================================================================*/
+#lightbox > .prev, #lightbox > .next {
+  transition: opacity 300ms;
+  // background: rgba(0,0,0,0.65);
+  position: absolute;
+  z-index: 10;
+  top: 44px;
+  bottom: 44px;
+  
+  cursor: pointer;  
+  color: rgba(0,0,0, .5);
+  .dark-mode & { color: rgba(255,255,255, .5); }
+  &:hover {
+    // color: @black;
+    // .dark-mode & { color: @white; }
+    color: @highlighted;
+  }
+  
+  .mobile-ua & {
+    display: none;
+  }
+  
+  .buy-form-displayed& {
+    animation: hideCover 300ms forwards;
+  }
+    
+  &:before {
+    &:extend(.icon);
+    display: block;
+    width: 32px;
+    height: 44px;
+    position: absolute;
+    top: 50%;
+    border-radius: 5px;
+    margin-top: -22px;
+    
+    font-size: 32px;
+    line-height: 44px;
+    text-align: center;
+    
+    .fullscreen &, .mobile-ua & {
+      background: rgba(255,255,255,0.8);
+      .dark-mode& {
+        background: rgba(0,0,0,0.8);
+      }
+    }
+  }
+}
+#lightbox > .prev {
+  left: 0;
+  right: 50%;
+  &:before { 
+    padding-right: 2px;
+    left: 10px;
+    // left: 0;
+    &:extend(.icon.arrow-left);
+  }
+}
+#lightbox > .next {
+  left: 50%;
+  right: 0;
+  &:before {
+    padding-left: 2px;
+    right: 10px;
+    // right: 0;
+    &:extend(.icon.arrow-right);
+  }
+}

@@ -1,8 +1,8 @@
 "use strict";
 
 var gulp = require('gulp');
-var _ = require('lodash');
-var aliasify = require('aliasify');
+var _ = require('underscore');
+// var aliasify = require('aliasify');
 var browserify = require('browserify');
 var buffer = require('gulp-buffer');
 var gulpif = require('gulp-if');
