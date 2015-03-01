@@ -1,0 +1,20 @@
+.page.event.inactive(
+    class= pageType === 'event-category' ? 'category' : ''
+    ): .page-scroller: .page-scroll   
+  .page-content
+    .content 
+      if model
+        .header
+          h1(data-hook='event-name')= model.name
+          .page-path 
+            span.wide-only #{language.elm['You are here']}:
+            a(href="#") #{language.elm['Home']}
+            span &gt;
+            if pageType === 'event'
+              span(data-hook='event-name')= model.name
+            else
+              a(data-hook='event-name', href='#events/'+ model.id)= model.name
+              span &gt;
+              span(data-hook='category-name')
+  .page-footer  
+  //- include ../footer.jade
