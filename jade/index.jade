@@ -80,7 +80,8 @@ html(lang='en', class="light-mode")
                      ss > 799 ? 800 : 600) + '/';
           }
           if (m) {
-            document.getElementById('splash').classList.add('event');
+            //- document.getElementById('splash').classList.add('event');
+            document.getElementById('splash').className += ' event';
             var i = ((+m[1] - 1) % 17);
             path += 'img'+ imgList[i] +'.jpg';
           }
