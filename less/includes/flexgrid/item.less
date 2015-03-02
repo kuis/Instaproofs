@@ -1,0 +1,95 @@
+/*==========================================================================*\
+  A Flexgrid item
+\*==========================================================================*/
+.flexgrid .flexgrid-item {
+  background: #eee center/cover no-repeat;
+  
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  overflow: hidden;
+  
+  transform: translateZ(0);
+  
+  // animation: fadeIn 400ms;
+  &:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+  .not-scrolling.desktop-ua & {
+    &:hover, &:active {
+      > .bg {
+        // border: rgba(0,0,0, .5) 5px dotted;
+        box-shadow: inset 0 0 0 8px rgba(120,120,120,.5);
+      }
+    }
+  }
+  
+  position: relative;
+  
+  // animation: fadeIn 400ms;
+  transition: opacity 400ms;
+  
+  > .bg {
+    background: center/cover no-repeat;
+    box-shadow: inset 0 0 0 1px rgba(100,100,100,0.2);
+    &:extend(.fill);
+    z-index: 1;
+  }
+  
+  > .spacer {
+    flex: 1 0 auto;
+  }
+  > .info {
+    flex: 0 0 auto;
+    background: rgba(255,255,255, .8);
+    box-sizing: border-box;
+    width: 290px;
+    max-width: 90%;
+    padding: 2em;
+    margin: 4.375em auto;
+    margin: 5% auto;
+    position: relative;
+    z-index: 2;
+    transition: transform 200ms;
+    // transform-origin: bottom left;
+    
+    @media (max-width: 800px) {
+      margin: 5% auto;
+    }
+    
+    text-align: center;
+    > h3 {
+      font: 300 1.875em/1.2 @oswald;
+      text-transform: uppercase;
+      
+      &.long-0 { font: 300 1.8em/1.2 @oswald; }
+      &.long-1 { font: 300 1.7em/1.2 @oswald; }
+      &.long-2 { font: 300 1.6em/1.2 @oswald; }
+      &.long-3 { font: 300 1.5em/1.2 @oswald; }
+      &.long-4 { font: 300 1.4em/1.2 @oswald; }
+      &.long-5 { font: 300 1.3em/1.2 @oswald; }
+      &.long-6 { font: 300 1.2em/1.2 @oswald; }
+      &.long-7 { font: 300 1.1em/1.2 @oswald; }
+      &.long-8 { font: 300 1.05em/1.2 @oswald; }
+      &.long-9 { font: 300 1em/1.2 @oswald; }
+      &.long-10 { font: 300 .9em/1.2 @oswald; }
+      
+      &.long {
+        font: 300 1.4em/1.2 @oswald;
+      }
+      &.extra-long {
+        font: 300 1.1em/1.2 @oswald;
+      }
+    }
+    > h4 {
+      font: 300 1.125em/1 @sans;
+      margin: 0.4em 0 1.2em;
+    }
+    > h5 {
+      font: 400 .8125em/1 @sans;
+      text-transform: uppercase;
+    }
+  }
+  
+}
