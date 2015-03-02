@@ -7,6 +7,7 @@ var browserify = require('browserify');
 var buffer = require('gulp-buffer');
 var gulpif = require('gulp-if');
 var jade = require('gulp-jade');
+var jshint = require('gulp-jshint');
 var less = require('gulp-less');
 var livereload = require('gulp-livereload');
 var lrHost; // host for the injected LR script to look for LR server at 
@@ -29,7 +30,7 @@ var dev = false;
   Less compilation and Autoprefixing
 \*==========================================================================*/
 gulp.task('css', function() { // compile and prefix CSS with sourcemaps
-  return gulp.src(['less/*.less', '!src/less/_*'])
+  return gulp.src(['less/*.less', '!less/**/_*'])
     .pipe(gulpif(dev, sourcemaps.init()))
     
     // compile Less
@@ -55,7 +56,7 @@ gulp.task('css', function() { // compile and prefix CSS with sourcemaps
   Jade compilation
 \*==========================================================================*/
 gulp.task('html', function() { // compile and render index.html
-  return gulp.src(['jade/*.jade', '!jade/_*'])
+  return gulp.src(['jade/*.jade', '!jade/**/_*'])
     .pipe(jade({ pretty: !!dev }).on("error", handleError))
     .pipe(gulp.dest('./build/'+ (dev ? 'dev' : 'production')))
     .pipe(livereload());
@@ -123,6 +124,17 @@ gulp.task('serve', serve({
   }),
 }));
 
+
+
+/*==========================================================================*\
+  Linting Javascript with JSHint
+\*==========================================================================*/
+gulp.task('lint', function() {
+  return gulp.src(['./node_modules/app/**/*.js', 
+                   '!./node_modules/app/templates.js'])
+    .pipe(jshint())
+    .pipe(jshint.reporter('jshint-stylish'));
+});
 
 
 

@@ -158,7 +158,7 @@
   // This option lets you set the max number of statements allowed per function.
   // Function declarations count as one statement. Their bodies don't get taken
   // into account for the outer function.
-  "maxstatements": 50, 
+  "maxstatements": 60, 
 
   // This option lets you control cyclomatic complexity throughout your code.
   // Cyclomatic complexity measures the number of linearly independent paths
@@ -166,7 +166,7 @@
   // Wikipedia.
   "maxcomplexity": 30, 
 
-  "maxlen": false, // This option lets you set the maximum length of a line.
+  "maxlen": 80, // This option lets you set the maximum length of a line.
 
 
   /* ===================================================================
@@ -203,7 +203,7 @@
   // This option tells JSHint that your code uses ECMAScript 5 specific features
   // such as getters and setters. Note that not all browsers implement these
   // features.
-  "es5": true, 
+  // "es5": true, 
   
   // This option tells JSHint that your code uses ES.next specific features
   // such as const. Note that these features are not finalized yet and not all
