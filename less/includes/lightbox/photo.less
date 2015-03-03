@@ -44,6 +44,7 @@
     .buy-form-displayed & {
       transform: translateY(200%) translateX(50%);
       opacity: 0;
+      animation: fadeOut 300ms forwards;
     }
     
     &.long-0  { font-size: 1.3em; }
@@ -151,9 +152,6 @@
       .title {
         opacity: 0;
         display: none;
-      }
-      .buy-form-displayed & .title {
-        // display: none;
       }
     }
     // background-size: auto;
