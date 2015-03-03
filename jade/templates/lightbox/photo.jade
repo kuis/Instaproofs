@@ -15,7 +15,8 @@
   .actions
     .action.cart: .tip= language.elm['Buy Image']
     .action.fav: .tip= language.elm['Add To Favorites']
-    if model.download
-      a.action.download(href= model.url, target="_blank", bypass): .tip= language.elm['Download']
+    if model.download_url
+      a.action.download(href= model.download_url, target="_blank", bypass)
+        .tip= language.elm['Download']
     .action.share: .tip= language.elm['Share']
     .action.variants: .tip Variants
