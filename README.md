@@ -44,7 +44,7 @@ var a = 1; // GOOD
 var b = 2;
   
 var c = 1, // BAD
-  d = 2';
+    d = 2;
 ```
 This way there's no need to mess with the commas - each line/variable is by itself.
 

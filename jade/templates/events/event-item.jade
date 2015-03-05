@@ -1,28 +1,19 @@
-- var classes = [];
+- var classes = [], cats = model.categories, products = model.products;
 - if (model.showcase) classes.push('showcased');
 - if (model.locked) classes.push('locked');
   
-//- - var imageURL = "/img/pics/thumbs/"+ (model.locked ? 'blur/' : '') + model.img;
 - var imageURL = model.locked ? model.thumb_blur_url : model.thumb_url;
 
-- var nl = model.name.length;
+- var nl = model.name.length; // progressively shrink long titles
 - var titleClass = nl >= 25 ? 'long-'+ Math.min(10, Math.floor((nl-25) / 10)) : '';
 
-if model.categories.length === 1 && model.products.length === 0
-  a.flexgrid-item.event-item(class= classes, href= "#events/" + model.id  + "/" + model.categories.models[0].id)
-    .bg(style="background-image:url("+ imageURL +");")
-    .spacer
-    .info
+- var href = "#events/"+ model.id;
+- if (cats.length === 1 && !products.length) href += '/'+ cats.at(0).id;
 
-      h3(class= titleClass)= model.name
-      h4= model.date.format("MMMM Do, YYYY")
-      h5
-else
-  a.flexgrid-item.event-item(class= classes, href= "#events/" + model.id)
-    .bg(style="background-image:url("+ imageURL +");")
-    .spacer
-    .info
-
-      h3(class= titleClass)= model.name
-      h4= model.date.format("MMMM Do, YYYY")
-      h5= model.type
+a.flexgrid-item.event-item(class= classes, href= href)
+  .bg(style="background-image:url("+ imageURL +");")
+  .spacer
+  .info
+    h3(class= titleClass)= model.name
+    h4= model.date.format("MMMM Do, YYYY")
+    h5= model.type
