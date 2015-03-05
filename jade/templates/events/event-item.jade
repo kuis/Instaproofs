@@ -8,11 +8,21 @@
 - var nl = model.name.length;
 - var titleClass = nl >= 25 ? 'long-'+ Math.min(10, Math.floor((nl-25) / 10)) : '';
 
-a.flexgrid-item.event-item(class= classes, href= "#events/" + model.id)
-  .bg(style="background-image:url("+ imageURL +");")
-  .spacer
-  .info
-    
-    h3(class= titleClass)= model.name
-    h4= model.date.format("MMMM Do, YYYY")
-    h5= model.type
+if model.categories.length === 1 && model.products.length === 0
+  a.flexgrid-item.event-item(class= classes, href= "#events/" + model.id  + "/" + model.categories.models[0].id)
+    .bg(style="background-image:url("+ imageURL +");")
+    .spacer
+    .info
+
+      h3(class= titleClass)= model.name
+      h4= model.date.format("MMMM Do, YYYY")
+      h5
+else
+  a.flexgrid-item.event-item(class= classes, href= "#events/" + model.id)
+    .bg(style="background-image:url("+ imageURL +");")
+    .spacer
+    .info
+
+      h3(class= titleClass)= model.name
+      h4= model.date.format("MMMM Do, YYYY")
+      h5= model.type

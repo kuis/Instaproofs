@@ -18,6 +18,11 @@
               span(data-hook='category-name')
           
         .flexgrid
+          if model.categories.length > 1
+            .heading    
+              .line
+              .label #{language.elm['Browse Photos']}
+              .line
           .categories.items
           .heading    
             .line
