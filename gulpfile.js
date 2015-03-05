@@ -5,14 +5,25 @@ var _ = require('underscore');
 // var aliasify = require('aliasify');
 var browserify = require('browserify');
 var buffer = require('gulp-buffer');
+var exit = require('gulp-exit');
 var gulpif = require('gulp-if');
 var jade = require('gulp-jade');
 var jshint = require('gulp-jshint');
 var less = require('gulp-less');
 var livereload = require('gulp-livereload');
+var localSettings;
 var lrHost; // host for the injected LR script to look for LR server at 
-try { lrHost = require('./live-reload-host'); }
-catch (e) { lrHost = 'localhost'; }
+var deployDest; // path to deploy the build for 'deploy' task 
+try { 
+  localSettings = require('./local-settings'); 
+  lrHost = localSettings.liveReloadHost;
+  deployDest = localSettings.deployDest;
+}
+catch (e) { 
+  lrHost = 'localhost'; 
+  deployDest = './build/production';
+}
+var minifyCSS = require('gulp-minify-css');
 var path = require('path');
 var prefix = require('gulp-autoprefixer');
 var serve = require('gulp-serve');
@@ -23,6 +34,7 @@ var uglify = require('gulp-uglify');
 var watchify = require('watchify');
 
 var dev = false;
+var buildDest = './build/production';
 
 
 
@@ -46,7 +58,8 @@ gulp.task('css', function() { // compile and prefix CSS with sourcemaps
     ).on("error", handleError))
     
     .pipe(gulpif(dev, sourcemaps.write()))
-    .pipe(gulp.dest('./build/'+ (dev ? 'dev' : 'production') +'/css'))
+    .pipe(gulpif(!dev, minifyCSS()))
+    .pipe(gulp.dest(buildDest +'/css'))
     .pipe(gulpif(dev, livereload()));
 });
 
@@ -58,8 +71,8 @@ gulp.task('css', function() { // compile and prefix CSS with sourcemaps
 gulp.task('html', function() { // compile and render index.html
   return gulp.src(['jade/*.jade', '!jade/**/_*'])
     .pipe(jade({ pretty: !!dev }).on("error", handleError))
-    .pipe(gulp.dest('./build/'+ (dev ? 'dev' : 'production')))
-    .pipe(livereload());
+    .pipe(gulp.dest(buildDest))
+    .pipe(gulpif(dev, livereload()));
 });
 
 gulp.task('templates', function() { // compile templates
@@ -82,8 +95,9 @@ function bundleJS(bundler) {
     .pipe(source('app.js'))
     .pipe(buffer())
     .pipe(gulpif(!dev, uglify()))
-    .pipe(gulp.dest('./build/'+ (dev ? 'dev' : 'production') +'/js'))
-    .pipe(livereload());
+    .pipe(gulp.dest(buildDest +'/js'))
+    .pipe(gulpif(dev, livereload()))
+    .pipe(gulpif(!dev, exit()));
 }
 
 
@@ -94,6 +108,7 @@ function bundleJS(bundler) {
 \*==========================================================================*/
 gulp.task('watch', function() { // watch and build 
   dev = true;
+  buildDest = './build/dev';
   gulp.watch(['less/**/*.less'], ['css']);
   gulp.watch(['jade/*.jade'], ['html']);
   gulp.watch(['jade/templates/**/*.jade'], ['templates']);
@@ -140,7 +155,17 @@ gulp.task('lint', function() {
 
 
 gulp.task('default', ['watch', 'css', 'html', 'templates', 'serve']);
-gulp.task('production', ['css', 'html', 'templates'], function () {
+gulp.task('production', ['templates', 'css', 'html'], function () {
+  return bundleJS();
+});
+
+gulp.task('preDeploy', function() {
+  buildDest = deployDest;
+  console.log('Deploying to ' + buildDest);
+});
+
+gulp.task('deploy', ['preDeploy', 'css', 'html', 'templates', 'production'], 
+    function () {
   return bundleJS();
 });
 
