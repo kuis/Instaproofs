@@ -10,5 +10,4 @@ a.flexgrid-item(href= "#events/" + event.id +'/'+ model.id)
   .spacer
   .info
     h3(class= titleClass)= model.name
-    //- .date= model.date.format("MMMM Do, YYYY")
-    h4= model.img_count +' Images'
+    h4!= lz('%d Photos', model.img_count)

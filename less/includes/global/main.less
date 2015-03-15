@@ -64,6 +64,10 @@ a {
   }
 }
 
+// span.full and span.short are used for full and short pieces of
+// text toggled based on screen size 
+span.short { display: none; }
+
 
 .highlighted-color {
   color: @highlighted;
@@ -371,12 +375,12 @@ main {
     justify-content: center;
     align-items: center;
     
-    > i {
+    i {
       font: 300 .6em/1.3 @sans;
       display: block;
     }
     
-    > small {
+    small {
       color: #838383;
       font: 400 .5em/1.2 @sans;
       display: block;

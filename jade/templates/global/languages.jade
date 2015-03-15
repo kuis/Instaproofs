@@ -1,0 +1,8 @@
+- var i18n = require('app/i18n/i18n');
+.languages-list
+  .options
+    each locale, id in i18n.locales
+      .language-option(class=[id, i18n.id === id ? 'selected' : ''], data-id=id)
+        .checkbox
+        .flag
+        = locale.name

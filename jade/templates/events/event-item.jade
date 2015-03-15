@@ -15,5 +15,5 @@ a.flexgrid-item.event-item(class= classes, href= href)
   .spacer
   .info
     h3(class= titleClass)= model.name
-    h4= model.date.format("MMMM Do, YYYY")
+    h4!= lz('LL', model.date)
     h5= model.type

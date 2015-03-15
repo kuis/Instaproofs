@@ -94,11 +94,15 @@
     margin-top: 1em;
     > a {
       display: inline-block;
-      width: 2.75em;
-      height: 2.75em;
+      // width: 2.75em;
+      // height: 2.75em;
+      width: 44px;
+      height: 44px;
       box-sizing: border-box;
-      border-radius: 100%;
+      // border-radius: 100%;
+      border-radius: 10px;
       text-align: center;
+      font-size: 16px;
       // border: #bbb 1px solid;
       box-shadow: inset 0 0 0 1px #bbb;
       &:hover {
@@ -109,7 +113,7 @@
       
       // color: @white;
       text-indent: -1000px;
-      overflow: hidden;
+      // overflow: hidden;
       position: relative;
       background: #000;
       
@@ -202,6 +206,133 @@
       }
     }
   }
+  
+  .language {
+    align-self: center;
+    
+    display: inline-block;
+    cursor: pointer;
+    height: 30px;
+    padding: 0 5px 0 10px;
+    margin-top: 12px;
+    border: #ccc 1px solid;
+    border-radius: 5px;
+    
+    font-size: 16px;
+    line-height: 30px;
+    // text-transform: uppercase;
+    
+    > span {
+      display: inline-block;
+      height: 30px;
+      line-height: 30px;
+    }
+    
+    &:before {
+      content: '';
+      display: inline-block;
+      width: 22px;
+      height: 15px;
+      margin-right: 5px;
+      vertical-align: top;
+      margin-top: 8px;
+      border-radius: 3px;
+      
+      background: url(../img/flags.png) top center/22px 30px no-repeat;
+      
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.2);
+    }
+    &.ru:before {
+      background-position: 0 -15px;
+    }
+    
+    .expand { // multiple options addons 
+      display: inline;
+      text-align: center;
+      box-sizing: border-box;
+      margin-left: 2px;
+      
+      &:after {
+        &:extend(.icon);
+        &:extend(.icon.menu2);
+        display: inline-block;
+        font-size: 16px;
+        line-height: 30px;
+        vertical-align: -1px;
+      }
+    }
+  }
+}
+
+
+.languages-list {
+  
+}
+
+.language-option {
+  cursor: pointer;
+  .desktop-ua &:hover {
+    background: rgba(0,0,0,.05);
+  }
+  
+  height: 44px;
+  padding: 0 0 0 10px;
+  
+  font-size: 16px;
+  line-height: 44px;
+  white-space: nowrap;
+  
+  
+  .flag {
+    content: '';
+    // float: right;
+    display: inline-block;
+    width: 22px;
+    height: 15px;
+    margin-right: 5px;
+    vertical-align: top;
+    margin-top: 14px;
+    border-radius: 3px;
+    
+    background: url(../img/flags.png) top center/22px 30px no-repeat;
+    
+    .ru& {
+      background-position: 0 -15px;
+    }
+    
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.2);
+  }
+  
+  .checkbox { // no-qty addons
+    display: inline;
+    text-align: center;
+    box-sizing: border-box;
+    margin-right: 5px;
+    
+    &:after {
+      &:extend(.icon);
+      &:extend(.icon.check);
+      display: inline-block;
+      font-size: 16px;
+      // line-height: 44px;
+      visibility: hidden;
+      vertical-align: -1px;
+    }
+    
+    .selected&:after {
+      &:extend(.icon.check);
+      visibility: visible;
+    }
+  }
+  
+  
+  
+  &:after {
+    content: '';
+    display: inline-block;
+    width: 15px;
+  }
+  // border-right: transparent 20px solid;
 }
 
 
@@ -215,6 +346,10 @@
   // background: rgba(38,38,38, 0.9);
   // background: #000;
   // background: #fff;
+  
+  &:empty {
+    display: none;
+  }
   
   .dark-mode & { 
     &, & a { color: @white; }

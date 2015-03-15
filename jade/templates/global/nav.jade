@@ -2,8 +2,8 @@ nav: .content: .body
   //- .search
     input(type="text", placeholder="Search Events")
   .right
-    a.search(href="#"): span #{language.elm['Search Events']}
-    a.favs(href="#favorites"): span #{language.elm['Favorites']}
-    a.cart(href="#cart"): span #{language.elm['Cart']}
-    a.menu(href="#"): span #{language.elm['Menu']}
-  a.logo(href="#"): img(src="/img/logo.png")
+    a.search(href="#events")!= lz('Search Events')
+    a.favs(href="#favorites")!= lz('Favorites')
+    a.cart(href="#cart")!= lz('Cart')
+    a.menu(href="#events")!= lz('Menu')
+  a.logo(href="javascript: void 0"): img(src="/img/logo.png")

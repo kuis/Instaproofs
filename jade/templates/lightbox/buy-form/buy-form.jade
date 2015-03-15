@@ -6,12 +6,12 @@
     .total
       .make-default 
         .checkbox 
-        | Save this as my default set
-      div Total: 
+        != lz('Save this as my default set')
+      div!= lz('Total:') +' '
       .total-price
     .buttons
       //- .left-buttons
-      .button.cancel Cancel
+      .button.cancel!= lz('Cancel')
       .right-buttons
-        .button.remove Remove From Cart
-        .button.save Add To Cart
+        .button.remove!= lz('Remove From Cart')
+        .button.save!= lz('Add To Cart')

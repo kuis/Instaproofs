@@ -3,22 +3,32 @@
     .content 
       .header
         .filters: .inner
-          a.showcased(href="#", data-filter="showcased") #{language.elm['Showcased']}<i> #{language.elm['Events']}</i>
-          a.current(href="#", data-filter="current") #{language.elm['Current']}
-          a.upcoming(href="#", data-filter="upcoming") #{language.elm['Upcoming']}
-          a.all.active(href="#", data-filter="all") #{language.elm['All']}<i class="all"> #{language.elm['Events']}</i>
+          a.showcased(href="#", data-filter="showcased") 
+            span.full!= lz('Showcased Events')
+            span.short!= lz('Showcased')
+          a.current(href="#", data-filter="current")!= lz('Current')
+          a.upcoming(href="#", data-filter="upcoming")!= lz('Upcoming')
+          a.all.active(href="#", data-filter="all") 
+            span.full!= lz('All Events')
+            span.short!= lz('All')
         .sorting: .inner
-          span Sort events by:
-          a.name(href="#", data-sort="name") <i>#{language.elm['Event']} </i>#{language.elm['Name']}
-          a.date.active(href="#", data-sort="date") <i>#{language.elm['Event']} </i>#{language.elm['Date']}
-          a.type(href="#", data-sort="type") <i>#{language.elm['Event']} </i>#{language.elm['Type']}
+          span!= lz('Sort events by:')
+          a.name(href="#", data-sort="name") 
+            span.full!= lz('Event Name')
+            span.short!= lz('Name')
+          a.date.active(href="#", data-sort="date") 
+            span.full!= lz('Event Date')
+            span.short!= lz('Date')
+          a.type(href="#", data-sort="type") 
+            span.full!= lz('Event Type')
+            span.short!= lz('Type')
         .clear
         .label
           .icon
           .loader.grey-bg
       .events-list
       .load-more
-        .label #{language.elm['Load More Events']}
+        .label!= lz('Load More Events')
         .loader
         
   .page-footer

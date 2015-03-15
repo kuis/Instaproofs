@@ -7,8 +7,8 @@
         .header
           h1(data-hook='event-name')= model.name
           .page-path 
-            span.wide-only #{language.elm['You are here']}:
-            a(href="#") #{language.elm['Home']}
+            span.wide-only!= lz('You are here:')
+            a(href="#")!= lz('Events')
             span &gt;
             if pageType === 'event'
               span(data-hook='event-name')= model.name
@@ -21,12 +21,12 @@
           if model.categories.length > 1
             .heading    
               .line
-              .label #{language.elm['Browse Photos']}
+              .label!= lz('Photos')
               .line
           .categories.items
           .heading    
             .line
-            .label #{language.elm['Products']}
+            .label!= lz('Products')
             .line
           .products.items
   .page-footer  

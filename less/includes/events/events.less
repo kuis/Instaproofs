@@ -113,7 +113,8 @@
           
           @media (max-width: 1220px) {
             margin: 0 8px;
-            i { display: none; }
+            span.full { display: none; }
+            span.short { display: inline; }
           }
         }
         
@@ -127,8 +128,11 @@
           margin-top: 0;
           > span, > a {
             display: block;
-            i { display: inline; }
+            // i { display: inline; }
           }
+          
+          span.full { display: inline; }
+          span.short { display: none; }
         }
         
         @media (max-width: 380px) {
@@ -145,9 +149,13 @@
       }
       
       @media (max-width: 550px) {
-        > .inner > a > i {
-          display: none;
-          &.all { display: inline; }
+        > .inner > a {
+          span.full { display: none; }
+          span.short { display: inline; }
+        }
+        > .inner > a.all {
+          span.full { display: inline; }
+          span.short { display: none; }
         }
       }
     }

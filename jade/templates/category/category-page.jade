@@ -7,8 +7,8 @@
         .header
           h1(data-hook='event-name')= model.name
           .page-path 
-            span.wide-only #{language.elm['You are here']}:
-            a(href="#") #{language.elm['Home']}
+            span.wide-only!= lz('You are here:')
+            a(href="#")!= lz('Events')
             span &gt;
             if pageType === 'event'
               span(data-hook='event-name')= model.name
