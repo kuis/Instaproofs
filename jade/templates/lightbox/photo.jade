@@ -10,10 +10,33 @@
       //- .full-img(style="background-image:url("+ model.url +")")
       img(src= model.img_url)
       .borders
+        
+      .crop-covers
+        .crop-cover.top
+        .crop-cover.right
+        .crop-cover.bottom
+        .crop-cover.left
+      
+      .crop-handle.top-left
+      .crop-handle.top-right
+      .crop-handle.bottom-left
+      .crop-handle.bottom-right
+        
+      .crop-controls.top
+        //- .button.reset!= lz('Reset')
+        .button.rotate
+          span.size
+          .spinner
+          span.label!= lz('Rotate')
+        
+      .crop-controls.bottom
+        .button.reset!= lz('Reset')
+        //- .button.cancel!= lz('Cancel')
+        .button.save!= lz('Save')
     if model.name
       .title(class= titleClass): .text= model.name 
   .actions
-    .action.cart: .tip!= lz('Buy Imageasdf')
+    .action.cart: .tip!= lz('Buy Image')
     .action.fav: .tip!= lz('Add To Favorites')
     if model.download_url
       a.action.download(href= model.download_url, target="_blank", bypass)

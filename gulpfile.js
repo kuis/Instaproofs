@@ -18,6 +18,7 @@ try {
   localSettings = require('./local-settings'); 
   lrHost = localSettings.liveReloadHost;
   deployDest = localSettings.deployDest;
+  nighlyDest = localSettings.nighlyDest;
 }
 catch (e) { 
   lrHost = 'localhost'; 
@@ -163,8 +164,16 @@ gulp.task('preDeploy', function() {
   buildDest = deployDest;
   console.log('Deploying to ' + buildDest);
 });
+gulp.task('preNightly', function() {
+  buildDest = nightlyDest;
+  console.log('Deploying to ' + buildDest);
+});
 
 gulp.task('deploy', ['preDeploy', 'css', 'html', 'templates', 'production'], 
+    function () {
+  return bundleJS();
+});
+gulp.task('nightly', ['preNightly', 'css', 'html', 'templates', 'production'], 
     function () {
   return bundleJS();
 });

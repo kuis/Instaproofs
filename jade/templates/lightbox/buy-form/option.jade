@@ -4,9 +4,18 @@
 .purchase-option(class=classes)
   .head
     .name
-      = model.display_name
+      span.short-name= model.display_name
+      span.full-name= model.display_name
       if model.description
         .info
+    if model.width && model.height
+      //- .crop(title="Adjust Crop")
+      .crop(title="Adjust Crop")
+        //- .crop-covers
+          .crop-cover.top
+          .crop-cover.right
+          .crop-cover.bottom
+          .crop-cover.left
     .price.single= model.display_price
     if !model.no_qty
       .qty

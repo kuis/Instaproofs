@@ -1,0 +1,197 @@
+.lightbox-photo {
+  
+  /*==========================================================================*\
+    Covers for cropped areas
+  \*==========================================================================*/
+  .crop-covers {
+    &:extend(.fill);
+    overflow: hidden;
+    
+    .cropping-mode& {
+      cursor: move;
+    }
+    z-index: 7;
+    
+    transition: opacity 200ms;
+    // visibility: hidden;
+    opacity: 0;
+    .cropping-areas& {
+      opacity: 1;
+      // visibility: visible;
+    }
+  }
+  .crop-cover {
+    &:extend(.fill);
+    // position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.8);
+    // background: rgba(40,0,0,.8);
+    // background: rgba(255,255,255,.8);
+    // .dark-mode & {
+    //   background: rgba(20,0,0,.8);
+    // }
+    transform: translateZ(0);
+    // &.top { transform: translate3d(0,-100%,0); }
+    // &.right { transform: translate3d(100%,0,0); }
+    // &.bottom { transform: translate3d(0,100%,0); }
+    // &.left { transform: translate3d(-100%,0,0); }
+    
+    cursor: default;
+    
+    &.top { top: -100%; bottom: auto; }
+    &.right { left: 100%; right: auto; }
+    &.bottom { top: 100%; bottom: auto; }
+    &.left { left: -100%; right: auto; }
+    
+    
+    // box-sizing: border-box;
+    // &.top { border-bottom: rgba(255,255,255,.5) 1px dotted; }
+    // &.right { border-left: rgba(255,255,255,.5) 1px dotted; }
+    // &.bottom { border-top: rgba(255,255,255,.5) 1px dotted; }
+    // &.left { border-right: rgba(255,255,255,.5) 1px dotted; }
+  }
+  
+  
+  
+  /*==========================================================================*\
+    Handles for resizing
+  \*==========================================================================*/
+  .crop-handle {
+    visibility: hidden;
+    .cropping-mode.cropping-resize& { visibility: visible; }
+    
+    cursor: pointer;
+    background-color: @highlighted;
+    // background: rgba(128,128,128,.8);
+    // background-color: @active;
+    // &:hover {
+    //   background-color: @highlighted;
+    // }
+    // background: @white;
+    // background: #333;
+    background-clip: content-box;
+    // box-shadow: inset 0 0 0 1px rgba(0,0,0,.6);
+    // box-shadow: inset 0 0 0 1px rgba(255,255,255,.2);
+    
+    width: 10px;
+    height: 10px;
+    border: 17px transparent solid;
+    border-radius: 100%;
+    
+    position: absolute;
+    transform: translate3d(0,0,0);
+    z-index: 10;
+    
+    &.top-left { top: -22px; left: -22px; cursor: nwse-resize; }
+    &.top-right { top: -22px; right: -22px; cursor: nesw-resize; }
+    &.bottom-left { bottom: -22px; left: -22px; cursor: nesw-resize; }
+    &.bottom-right { bottom: -22px; right: -22px; cursor: nwse-resize; }
+  }
+  
+  
+  /*==========================================================================*\
+    Controls
+  \*==========================================================================*/
+  .crop-controls {
+    position: absolute;
+    // z-index: 11;
+    left: 0;
+    // left: -20px;
+    // right: -20px;
+    width: 100%;
+    height: 30px;
+    
+    display: flex;
+    justify-content: space-between;
+    justify-content: center;
+    transform: scale(0);
+    animation: hideCover 200ms both;
+    .cropping-mode& { animation: showCover 200ms forwards; }
+    
+    &.top {
+      top: -30px;
+    }
+    &.bottom {
+      bottom: -30px;
+    }
+    
+    .button {
+      margin-top: 3px;
+      margin-left: 2px;
+      margin-right: 2px;
+      height: 24px;
+      padding: 0 20px;
+      display: inline-block;
+      
+      cursor: pointer;
+      font: 400 16px/24px @sans;
+      // text-transform: uppercase;
+      
+      // background: rgba(0,0,0,0.1);
+      .desktop-ua &:hover {
+        background: rgba(0,0,0,0.1);
+      }
+      .dark-mode & {
+        // background: rgba(125,125,125,0.5);
+        .desktop-ua&:hover {
+          background: rgba(125,125,125,0.6);
+        }
+      }
+      
+      &.rotate {
+        cursor: default;
+        .desktop-ua &:hover { background: none; }
+        .cropping-rotate& { 
+          cursor: pointer;
+          .desktop-ua &:hover {
+            background: rgba(0,0,0,0.1);
+            .dark-mode& { background: rgba(125,125,125,0.6); }
+          }
+          .dark-mode & {
+            .desktop-ua&:hover {
+              background: rgba(125,125,125,0.6);
+            }
+          }
+        }
+        .spinner, .label {
+          display: none;
+          .cropping-rotate& { display: inline-block; }
+        }
+        .spinner {
+          margin: 0 10px;
+          font-size: .8em;
+          text-decoration: none !important;
+          &:before {
+            &:extend(.icon);
+            &:extend(.icon.spinner);
+          }
+        }
+      }
+      
+      // &.cancel, &.reset {
+      //   padding-left: 0;
+      // }
+      // &.rotate, &.save {
+      //   padding-right: 0;
+      // }
+      
+      // .desktop-ua &:hover {
+      //   text-decoration: underline;
+      // }
+      
+      &.size {
+        font-weight: bold;
+      }
+      
+      &.save {
+        color: @white;
+        color: @highlighted;
+        // background: @highlighted;
+        // .desktop-ua &:hover {
+        //   background: darken(@highlighted, 10%)
+        // }
+      }
+    }
+  }
+}

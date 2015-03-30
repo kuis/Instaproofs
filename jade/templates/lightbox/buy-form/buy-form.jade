@@ -1,4 +1,4 @@
-.buy-form
+.buy-form: .buy-form-content
   .options-wrapper
     .scroller
       .options
@@ -6,7 +6,8 @@
     .total
       .make-default 
         .checkbox 
-        != lz('Save this as my default set')
+        span.default-short!= lz('Save as default')
+        span.default-long!= lz('Save this as my default set')
       div!= lz('Total:') +' '
       .total-price
     .buttons
@@ -14,4 +15,5 @@
       .button.cancel!= lz('Cancel')
       .right-buttons
         .button.remove!= lz('Remove From Cart')
-        .button.save!= lz('Add To Cart')
+        .button.add!= lz('Add To Cart')
+        .button.save!= lz('Save')
