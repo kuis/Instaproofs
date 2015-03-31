@@ -109,6 +109,10 @@
       // transform: translateY(-44px);
       
       cursor: pointer;
+      
+      .buy-form-fullscreen .qty-input-mode& {
+        opacity: 0;
+      }
       // .active& { cursor: pointer; }
       // width: 16px;
       
@@ -201,7 +205,7 @@
         width: 100%;
         height: 100%;
         background: rgba(0,0,0,.8);
-        background: rgba(119,119,119,.9);
+        background: rgba(100,100,100,.9);
         // background: #777;
         // .dark-mode & { background: @highlighted; }
         .dark-mode & { background: rgba(0,0,0,.9); }
@@ -263,8 +267,11 @@
         top: 0;
         left: 0;
         
-        .dark-mode & {
-          color: @white;
+        &, &[disabled] {
+          color: @black !important;
+          .dark-mode & {
+            color: @white !important;
+          }
         }
         background: none;
         outline: 0 none;
@@ -286,10 +293,6 @@
         height: 30px;
         border-left: #ccc 1px solid;
         position: relative;
-        
-        .buy-form-fullscreen & {
-          display: none;
-        }
         background: rgba(0,0,0,0.05);
         .desktop-ua &:hover { background: rgba(0,0,0,.1); }
         
@@ -321,6 +324,43 @@
         left: 15px;
         background: lighten(@black, 30%);
         .dark-mode & { background: darken(@white, 30%); }
+      }
+      
+      .buy-form-fullscreen & {
+        input {
+          cursor: pointer;
+          // pointer-events: none;
+        }
+        .plus, .minus {
+          visibility: hidden;
+          opacity: 0;
+          transition: opacity 300ms;
+          background: #eee;
+          border-top: #ccc 1px solid;
+          border-bottom: #ccc 1px solid;
+          position: absolute;
+          width: 42px;
+          top: -1px;
+          &:before {
+            left: 16px;
+          }
+        }
+        .plus {
+          left: -44px;
+          &:after {
+            left: 20px;
+          }
+        }
+        .minus {
+          left: -87px;
+        }
+        // visibility: hidden;
+      }
+      .buy-form-fullscreen .qty-input-mode& {
+        .plus, .minus {
+          visibility: visible;
+          opacity: 1;
+        }
       }
     }
     
