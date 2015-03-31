@@ -10,8 +10,8 @@
         .info
     if model.width && model.height
       //- .crop(title="Adjust Crop")
-      .crop(title="Adjust Crop")
-        //- .crop-covers
+      .crop(title="Click to adjust crop", style="background-image:url("+ photo.model.thumb_url +")")
+        .crop-covers
           .crop-cover.top
           .crop-cover.right
           .crop-cover.bottom

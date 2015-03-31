@@ -14,11 +14,12 @@ var livereload = require('gulp-livereload');
 var localSettings;
 var lrHost; // host for the injected LR script to look for LR server at 
 var deployDest; // path to deploy the build for 'deploy' task 
+var nightlyDest; // path to deploy the build for 'nightly' task 
 try { 
   localSettings = require('./local-settings'); 
   lrHost = localSettings.liveReloadHost;
   deployDest = localSettings.deployDest;
-  nighlyDest = localSettings.nighlyDest;
+  nightlyDest = localSettings.nightlyDest;
 }
 catch (e) { 
   lrHost = 'localhost'; 
