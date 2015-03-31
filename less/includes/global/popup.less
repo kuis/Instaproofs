@@ -87,6 +87,15 @@
       &.left {
         display: block;
       }
+      &.right {
+        display: block;
+        left: auto;
+        right: -15px;
+        &:after {
+          left: auto;
+          right: 10px;
+        }
+      }
       
       &:after {
         content: '';
