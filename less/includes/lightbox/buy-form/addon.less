@@ -1,14 +1,67 @@
 .purchase-addon {
-  display: flex;
-  align-items: center;
-  height: 44px;
-  line-height: 44px;
-  padding: 0 10px 0 10px;
+  // display: flex;
+  // align-items: center;
+  // height: 44px;
+  // line-height: 44px;
+  // padding: 0 10px 0 10px;
   
-  cursor: pointer;
+  // cursor: pointer;
+  
   // &:hover {
   //   background: rgba(0,0,0,.1);
   // }
+  
+  position: relative;
+  
+  > .main {
+    display: flex;
+    align-items: center;
+    height: 44px;
+    line-height: 44px;
+    padding: 0 10px 0 10px;
+    cursor: pointer;
+    // background: #0f0;
+  }
+  > .info {
+    position: absolute;
+    right: -34px;
+    top: 0;
+    
+    box-sizing: border-box;
+    width: 34px;
+    height: 100%;
+    padding: 0 0 0 5px;
+    margin-left: 3px;
+    
+    // background: #f00;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 44px;
+    text-align: left;
+    // vertical-align: -1px;
+    
+    color: rgba(0,0,0,.7);
+    .desktop-ua &:hover { color: rgba(0,0,0,1); }
+    .dark-mode & {
+      color: rgba(255,255,255,.4);
+      .desktop-ua&:hover { color: rgba(255,255,255,1); }
+    }
+    
+    &:after {
+      &:extend(.icon);
+      &:extend(.icon.info);
+      vertical-align: -2px;
+    }
+    
+    // .desktop-ua & {
+    //   opacity: 0;
+    //   transition: opacity 200ms 200ms;
+    // }
+    // .desktop-ua :hover& {
+    //   opacity: 1;
+    //   transition: opacity 200ms 300ms;
+    // }
+  }
   
   .name {
     flex-grow: 1;
