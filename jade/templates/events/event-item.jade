@@ -7,10 +7,7 @@
 - var nl = model.name.length; // progressively shrink long titles
 - var titleClass = nl >= 25 ? 'long-'+ Math.min(10, Math.floor((nl-25) / 10)) : '';
 
-- var href = "#events/"+ model.id;
-- if (cats.length === 1 && !products.length) href += '/'+ cats.at(0).id;
-
-a.flexgrid-item.event-item(class= classes, href= href)
+a.flexgrid-item.event-item(class= classes, href= "#events/"+ model.id)
   .bg(style="background-image:url("+ imageURL +");")
   .spacer
   .info

@@ -1,0 +1,189 @@
+.page-share {
+  background: #fff;
+  width: 100%;
+  box-sizing: border-box;
+  width: 240px;
+  height: 60px;
+  padding: 0 0 20px;
+ 
+  color: #14110e;
+  font: 300 1em/1.4 @sans;
+  text-align: center;
+
+  .light-mode.desktop-ua & {
+    h1, .contact-links, .social {
+      transform: translate3d(0,0,0);
+      // opacity: 0;
+      transition: opacity 500ms;
+    }
+    &:hover {
+      h1, .contact-links, .social {
+        opacity: 1;
+      }
+    }
+  }
+  
+  .social {
+    margin-top: .5em;
+    height: 40px;
+    width: 240px;
+    > a {
+      display: inline-block;
+      // width: 2.75em;
+      // height: 2.75em;
+      width: 44px;
+      height: 44px;
+      box-sizing: border-box;
+      // border-radius: 100%;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 16px;
+      // border: #bbb 1px solid;
+      box-shadow: inset 0 0 0 1px #bbb;
+      &:hover {
+        color: @white;
+        box-shadow: none;
+      }
+      margin: 0 8px;
+      
+      // color: @white;
+      text-indent: -1000px;
+      // overflow: hidden;
+      position: relative;
+      background: #000;
+      
+      &:after {
+        &:extend(.icon);
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: transform 200ms;
+        
+        text-indent: 0;
+        font-size: 1.25em;
+        line-height: 2.2em;
+      }
+      &.facebook {
+        background: #2d4489;
+        &:after { &:extend(.icon.facebook); }
+        &:hover { background: lighten(#2d4489, 0%); }
+      }
+      &.twitter {
+        background: #4878be;
+        @media (min-width: 700px) { &:after { left: 1px; top: 1px; } }
+        &:after { &:extend(.icon.twitter); }
+        &:hover { background: lighten(#4878be, 0%); }
+      }
+      &.linkedin {
+        background: #0c65ab;
+        @media (min-width: 700px) { &:after { left: 1px; top: -1px; } }
+        &:after { &:extend(.icon.linkedin); }
+        &:hover { background: lighten(#0c65ab, 0%); }
+      }
+      &.instagram {
+        background: #416b95;
+        @media (min-width: 700px) { &:after { left: 1px; } }
+        &:after { &:extend(.icon.instagram); }
+        &:hover { background: lighten(#416b95, 0%); }
+      }
+      
+      .desktop-ua &, .mobile-ua & { background: none; }
+    }
+  }
+}
+
+
+.page-share-layout {
+  //background: #fff;
+  width: 100%;
+  box-sizing: border-box;
+  width: 140px;
+  height: 30px;
+  color: #14110e;
+  font: 300 1em/1.4 @sans;
+  text-align: center;
+
+  .light-mode.desktop-ua & {
+    h1, .contact-links, .social {
+      transform: translate3d(0,0,0);
+      // opacity: 0;
+      transition: opacity 500ms;
+    }
+    &:hover {
+      h1, .contact-links, .social {
+        opacity: 1;
+      }
+    }
+  }
+  
+  .social {
+    //margin-top: .5em;
+   // height: 30px;
+   // width: 140px;
+    > a {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      box-sizing: border-box;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 12px;
+      // border: #bbb 1px solid;
+      box-shadow: inset 0 0 0 1px #bbb;
+      &:hover {
+        color: @white;
+        box-shadow: none;
+      }
+      margin: 0 2px;
+      
+      // color: @white;
+      text-indent: -1000px;
+      // overflow: hidden;
+      position: relative;
+      background: #000;
+      
+      &:after {
+        &:extend(.icon);
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: transform 200ms;
+        
+        text-indent: 0;
+        font-size: 1.25em;
+        line-height: 2.2em;
+      }
+      &.facebook {
+        background: #2d4489;
+        &:after { &:extend(.icon.facebook); }
+        &:hover { background: lighten(#2d4489, 0%); }
+      }
+      &.twitter {
+        background: #4878be;
+        @media (min-width: 500px) { &:after { left: 1px; top: 1px; } }
+        &:after { &:extend(.icon.twitter); }
+        &:hover { background: lighten(#4878be, 0%); }
+      }
+      &.linkedin {
+        background: #0c65ab;
+        @media (min-width: 500px) { &:after { left: 1px; top: -1px; } }
+        &:after { &:extend(.icon.linkedin); }
+        &:hover { background: lighten(#0c65ab, 0%); }
+      }
+      &.instagram {
+        background: #416b95;
+        @media (min-width: 500px) { &:after { left: 1px; } }
+        &:after { &:extend(.icon.instagram); }
+        &:hover { background: lighten(#416b95, 0%); }
+      }
+      
+      .desktop-ua &, .mobile-ua & { background: none; }
+    }
+  }
+}
