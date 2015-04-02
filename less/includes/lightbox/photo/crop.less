@@ -7,16 +7,21 @@
     &:extend(.fill);
     overflow: hidden;
     
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    
     .cropping-mode& {
       cursor: move;
     }
     z-index: 7;
     
-    transition: opacity 200ms 300ms;
+    // transition: opacity 200ms 300ms;
+    transition: opacity 200ms;
     // visibility: hidden;
     opacity: 0;
     .cropping-areas& {
-      transition: opacity 200ms;
+      // transition: opacity 200ms;
       opacity: 1;
       // visibility: visible;
     }
@@ -53,6 +58,72 @@
     // &.left { border-right: rgba(255,255,255,.5) 1px dotted; }
   }
   
+  
+  /*==========================================================================*\
+    Crop Tips
+  \*==========================================================================*/
+  .img .crop-tips {
+    &:extend(.fill);
+    top: -30px;
+    bottom: -30px;
+    z-index: 11;
+    
+    color: @black;
+    // background: @white;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    transition: opacity 200ms;
+    opacity: 0;
+    .cropping-mode& {
+      opacity: 1;
+    }
+    
+    &.hidden {
+      animation: hideCover 200ms forwards;
+    }
+    
+    
+    @media(max-width: 550px) {
+      font-size: 12px;
+    }
+    
+    h3 {
+      font-size: 1.5em;
+      margin-bottom: .5em;
+    }
+    
+    p {
+      text-align: left;
+      margin-top: .5em;
+    }
+    
+    
+    
+    .got-it {
+      height: 44px;
+      padding: 0 20px;
+      margin-top: 1em;
+      display: inline-block;
+      background: @highlighted;
+      .desktop-ua &:hover { background: darken(@highlighted, 10%) }
+      
+      cursor: pointer;
+      color: @white;
+      font: 400 16px/44px @sans;
+      text-transform: uppercase;
+    }
+    
+    .crop-tip {
+      padding: 15px;
+      background: rgba(255,255,255,.95);
+      width: 400px;
+      max-width: 60%;
+      // display: 
+    }
+  }
   
   
   /*==========================================================================*\

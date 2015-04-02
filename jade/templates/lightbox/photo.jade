@@ -1,6 +1,8 @@
 - var app = require('app');
+- var ua = require('app/utils/ua');
 - var nl = model.name.length;
 - var titleClass = nl >= 35 ? 'long-'+ Math.min(10, Math.floor((nl-25) / 10)) : '';
+//- - app.storage.cropTipUsed = '';
 .lightbox-photo
   .images
     .img
@@ -32,7 +34,11 @@
       .crop-controls.bottom
         .button.reset!= lz('Reset')
         //- .button.cancel!= lz('Cancel')
-        .button.save!= lz('Save')
+        .button.save!= lz('OK')
+      
+      if !app.storage.cropTipUsed && ua.desktop
+        .crop-tips
+          .crop-tip!= lz(ua.desktop ? '$crop-tips-desktop' : '$crop-tips-mobile')
     if model.name
       .title(class= titleClass): .text= model.name 
   .actions
@@ -43,3 +49,5 @@
         .tip!= lz('Download')
     .action.share: .tip!= lz('Share')
     .action.variants: .tip!= lz('Variants')
+    
+  .lightbox-photo-cover

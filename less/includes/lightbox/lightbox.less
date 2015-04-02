@@ -40,6 +40,17 @@
     overflow: hidden;
   }
 }
+#lightbox-cover {
+  &:extend(.fill);
+  z-index: 200;
+  display: none;
+  
+  &.nwse-resize { cursor: nwse-resize; }
+  &.nesw-resize { cursor: nesw-resize; }
+  &.nesw-resize { cursor: nesw-resize; }
+  &.nwse-resize { cursor: nwse-resize; }
+  &.move { cursor: move; }
+}
 
 
 @import 'prev-next';
