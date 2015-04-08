@@ -19,7 +19,6 @@
     "fastclick": "^1.0.3",
     "fullscreen": "^0.1.0",
     "moment": "^2.8.3",
-    "popover": "^2.3.0",
     "sprintf-js": "^1.0.2",
     "underscore": "~1.6.0",
     "velocity-animate": "^1.1.0"
