@@ -19,12 +19,5 @@
         a.icon.download(href= model.url, target="_blank", bypass)
           .tip!= lz('Download')
       //- .icon.hide: .tip!= lz('Hide Image')
-      //- .icon.share: .tip!= lz('Share')
-      .icon.share: .tip
-        .page-share-layout
-          .social
-            a.facebook(href=facebookHref, data-hook='facebook', target="_blank")
-            a.twitter(href=twitterHref, data-hook='twitter', target="_blank")
-            a.linkedin(href=linkedinHref, data-hook='linkedin', target="_blank")
-            a.instagram(href="http://www.instagram.com", data-hook='instagram', target="_blank")
+      .icon.share: .tip!= lz('Share')
   //- .image
