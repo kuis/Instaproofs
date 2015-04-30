@@ -3,7 +3,7 @@
 - var nl = model.name.length;
 - var titleClass = nl >= 35 ? 'long-'+ Math.min(10, Math.floor((nl-25) / 10)) : '';
 //- - app.storage.cropTipUsed = '';
-.lightbox-photo
+.product-lightbox-photo
   .images
     .img
       .loader.white
@@ -16,7 +16,7 @@
     if model.name
       .title(class= titleClass): .text= model.name 
   .actions
-    .action.cart: .tip!= lz('Buy Image')
+    .action.cart: .tip!= lz('Buy Product')
     .action.fav: .tip!= lz('Add To Favorites')
     if model.download_url
       a.action.download(href= model.download_url, target="_blank", bypass)
