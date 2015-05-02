@@ -14,14 +14,24 @@
       .borders
       
     if model.name
-      .title(class= titleClass): .text= model.name 
-  .actions
-    .action.cart: .tip!= lz('Buy Product')
-    .action.fav: .tip!= lz('Add To Favorites')
-    if model.download_url
-      a.action.download(href= model.download_url, target="_blank", bypass)
-        .tip!= lz('Download')
-    .action.share: .tip!= lz('Share')
-    .action.variants: .tip!= lz('Variants')
+      .title(class= titleClass): .text= model.name
+  .product-buy-form
+    .description
+      .title= model.name
+      .price!= lz('price')
+      .cart
+    .note
+      .text!= lz('Add Note/Instruction for This Item (optional):')
+      .textarea.field
+    .quantity
+      .text!= lz('Quantity:')
+      .value
+    .print
+      .text!= lz('Print Size:')
+      .value!= lz('Photo Album Image')
+  .buttons
+      //- .left-buttons
+      .button.cancel!= lz('Return to Browsing')
+      .button.add!= lz('Add To Cart')
     
   .lightbox-photo-cover
