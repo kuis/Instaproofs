@@ -20,9 +20,11 @@
       .title= model.name
       .price!= lz('price')
       .cart
+        input
     .note
       .text!= lz('Add Note/Instruction for This Item (optional):')
-      .textarea.field
+      .field
+        textarea
     .quantity
       .text!= lz('Quantity:')
       .value

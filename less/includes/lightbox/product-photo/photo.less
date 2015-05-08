@@ -192,7 +192,7 @@
       margin: 5px;
 
       &.description {
-        height: 40px;
+        height: 35px;
         padding: 10px;
         .title {
           width: 30%;
@@ -205,9 +205,15 @@
         }
         .cart {
           width: 30%;
-          float: right;
-          text-align: right;
+          float: right;          
           &:extend(.icon.cart-add);
+        }
+        .cart input {
+          width: 30%;
+          height: 15px;
+          border: 1px solid #cccccc;
+          padding: 10px;
+          font-family: Tahoma, sans-serif;
         }
       }
 
@@ -218,8 +224,12 @@
           float: left;
           text-align: left;
         }
-        .field {
-            
+        .field textarea {
+          width: 95%;
+          height: 40px;
+          border: 1px solid #cccccc;
+          padding: 10px;
+          font-family: Tahoma, sans-serif;
         }
       }
 
