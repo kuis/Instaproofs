@@ -168,10 +168,14 @@
     left: 54px;
     right: 54px;
     top: 53%;
-    bottom: 44px;
-    height: 400px;
+    bottom: 20px;
+    width: 50%;
+    min-height: 40px;
+    height: 32%;
     overflow: auto;
-    margin-bottom: 50px;
+    margin:0 auto;
+    margin-bottom: 20px;
+    
     
     .fullscreen &, .mobile-ua & {
       top: 0;
@@ -179,16 +183,11 @@
       right: 0;
       bottom: 0;
     }
-    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 
     > div {
       //flex: 1;
       background-color: #f1f1f1;
       border: 1px solid #ebebeb;
-      width: 40%;      
       margin: 5px;
 
       &.description {
@@ -226,7 +225,7 @@
         }
         .field textarea {
           width: 95%;
-          height: 40px;
+          height: 10%;
           border: 1px solid #cccccc;
           padding: 10px;
           font-family: Tahoma, sans-serif;
