@@ -1,0 +1,22 @@
+.login-form
+  //- .close
+  .block.main
+    h1= model.name
+    .date= model.date.format("MMMM Do, YYYY")
+    .type= model.type
+    .error!= lz('No match found. Please try again.')
+  //- .arrow
+  .block.input.email
+    input(type="text", name="email", placeholder="Email Address")
+    .icon
+  .block.input.password
+    input(type="password", name="password", placeholder="Password")
+    .icon
+  .buttons
+    .button.large.back!= lz('Back')
+    .loader-container
+    .button.large.highlighted.submit
+      .text!= lz('View Event')
+      .loader.small.white
+    
+  

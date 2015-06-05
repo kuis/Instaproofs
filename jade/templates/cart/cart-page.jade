@@ -1,0 +1,72 @@
+- var app = require('app')
+.page.cart.inactive.empty: .page-scroller: .page-scroll   
+  .page-content
+    .content 
+      .page-header
+        h1!= lz('Shopping Cart')
+        .page-path 
+          //- span.wide-only!= lz('You are here:')
+          a(href="#events")!= lz('Events')
+          span &gt;
+          a(data-hook='event-name', href='#events/'+ model.event.id)= model.event.name
+          span &gt;
+          span!= lz('Cart')
+      
+      .cart-empty-message
+        h2!= lz('Your cart for this event is empty.')
+        a.button.large(href='#events/'+model.event.id)!= lz('Back to Event')
+      
+      .cart-contents  
+        .left-column
+          .heading
+            .line
+            .label Photos
+            .line
+          .block.photos
+                
+            .thead.photos
+              .left
+                .th.item!= lz('Item')
+                .th.extras!= lz('Options')
+              .right
+                .th.quantity!= lz('Qty')
+                .th.price!= lz('Cost')
+            .cart-photos
+              
+        .right-column
+          .heading
+            .line
+            .label Summary
+            .line
+          
+          .summary
+            .discount
+              label 
+                span!= lz('Discount or Gift Code')
+                input(type="text", name="code")
+              .button.apply-code!= lz("Apply Code")
+            .shipping
+              label
+                span!= lz('Shipping')
+                .select
+                  select(name="shipping")
+                //- input(type="text", name="code")
+                
+            .totals
+              .row
+                .left!= lz('Subtotal:')
+                .right.subtotal-price $15.30
+              .row
+                .left!= lz('Discount:')
+                .right.discount-price -$5.00
+              .row
+                .left!= lz('Shipping:')
+                .right.shipping-price $2.50
+              .row.total
+                .left!= lz('Total:')
+                .right.total-price $12.80
+              
+              .button.checkout!= lz('Checkout')
+          
+  .page-footer  
+  //- include ../footer.jade

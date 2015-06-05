@@ -7,7 +7,7 @@
     a.view-large(href= model.app_url)
       span!= lz('View Larger Image')
     .icons
-      .icon.cart: .tip!= lz('Buy')
+      a.icon.cart(href= model.buy_url): .tip!= lz('Buy')
       //- .icon.cart: .tip!= lz('Buy More')
       .icon.fav: .tip!= lz('To Favorites')
       //- .icon.fav: .tip!= lz('Unfavorite')

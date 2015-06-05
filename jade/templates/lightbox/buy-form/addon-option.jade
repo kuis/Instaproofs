@@ -2,7 +2,7 @@
   .text
     .title
       .checkbox
-      = model.name +' (+'+ model.formatMoney(model.price) +')'
+      = model.name +' (+'+ model.formatMoney(model.getPrice(this.size_id)) +')'
     .description= model.description
   if model.img_url
     .image-container(style="background-image:url("+model.img_url+")")

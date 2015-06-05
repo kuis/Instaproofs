@@ -3,12 +3,12 @@
 - if (model.options) classes.push('no-qty');
 .purchase-addon(class=classes)
   .main
-    if model.options.length
+    if model.options.length > 1
       .expand
       .name= model.selected_name
     else
       .checkbox
-      .name= model.name
+      .name= model.options.length ? model.options.at(0).name : model.name
     .price.single= model.display_price
   if model.description
     .info

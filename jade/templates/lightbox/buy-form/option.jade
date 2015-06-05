@@ -4,22 +4,22 @@
 .purchase-option(class=classes)
   .head
     .name
-      span.short-name= model.display_name
-      span.full-name= model.display_name
-      if model.description
+      span.short-name= model.size.display_name
+      span.full-name= model.size.display_name
+      if model.size.description
         .info
-    if model.width && model.height
+    if model.size.width && model.size.height
       //- .crop(title="Adjust Crop")
       //- .crop(title="Click to adjust crop", style="background-image:url("+ photo.model.thumb_url +")")
-      .crop(style="background-image:url("+ photo.model.img_url +")")
+      .crop(style="background-image:url("+ photo.model.micro_url +")")
         .crop-tip!= lz('Click to adjust crop')
         .crop-covers
           .crop-cover.top
           .crop-cover.right
           .crop-cover.bottom
           .crop-cover.left
-    .price.single= model.display_price
-    if !model.no_qty
+    .price.single= model.size.display_price
+    if !model.size.no_qty
       .qty
         //- input(type= ua.mobile ? "number" : "text", name="qty", value="0")
         input(type="number", name="qty", value="0")
