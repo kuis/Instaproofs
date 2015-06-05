@@ -1,3 +1,7 @@
+- var url = 'http://' + location.host + '/' + model.app_url;
+- var facebookHref = 'https://www.facebook.com/sharer/sharer.php?u='+url;
+- var twitterHref = 'https://twitter.com/home?status='+url;
+- var linkedinHref = 'https://www.linkedin.com/shareArticle?mini=true&url='+url+'&title=&summary=&source=';
 .grid-photo
   .image
     //- img(src= model.thumb_url)
@@ -17,4 +21,3 @@
       //- .icon.hide: .tip!= lz('Hide Image')
       .icon.share: .tip!= lz('Share')
   //- .image
-  
