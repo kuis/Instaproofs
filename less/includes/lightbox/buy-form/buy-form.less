@@ -57,6 +57,10 @@
   flex-direction: column;
   align-items: center;
   
+  &.crop-only {
+    display: none;
+  }
+  
   > .buy-form-content {
     display: flex;
     flex-direction: column;
@@ -79,10 +83,19 @@
   .buy-form-displayed .cropping-mode-pending & {
     animation: buyFormScaleOut 300ms forwards;
   }
+  .buy-form-displayed .buy-form-inline.cropping-mode-pending & {
+    animation: none;
+  }
   .buy-form-inline & {
-    // animation: buyFormOut 300ms forwards !important;
+    animation: buyFormOut 300ms forwards !important;
     .buy-form-displayed & {
-      // animation: buyFormIn 300ms forwards !important;
+      animation: buyFormIn 300ms forwards !important;
+      .buy-only& {
+        animation: none !important;
+      }
+    }
+    .buy-only& {
+      animation: none !important;
     }
   }
   
@@ -92,6 +105,28 @@
   
   &.hidden {
     display: none;
+  }
+  
+  .products-prints {
+    // width: 100%;
+    // margin-bottom: 15px;
+    // background: #f5f5f5;
+    border-top: rgba(0,0,0,0.1) 1px dashed;
+    .dark-mode & { border-top: rgba(255,255,255,0.1) 1px dashed; }
+    // border-right: none;
+    // border-top: none;
+    .product-sizes {
+      border-bottom: rgba(0,0,0,0.1) 1px dashed;
+      .dark-mode & { border-bottom: rgba(255,255,255,0.1) 1px dashed; }
+    }
+    
+    .product-title {
+      font: 400 1em/30px @sans;
+      text-align: left;
+      height: 30px;
+      padding-top: 7px;
+      padding-left: 15px;
+    }
   }
   
   .options-wrapper {
@@ -112,11 +147,29 @@
       width: 100%;
       height: 100%;
       border-bottom: #ccc 1px solid;
+      padding-top: 20px;
       
       overflow: auto;
       -webkit-overflow-scrolling: touch;
       
+      > .products-head {
+        height: 44px;
+        padding: 3px 15px 10px;
+        line-height: 44px;
+        text-align: center;
+        
+        display: none;
+        .usable-products& {
+          display: block;
+        }
+        
+        .button {
+          // text-transform: none;
+        }
+      }
+      
       > .options { // list of perchased options which height is updated from JS
+        position: relative;
       }
     }
   }

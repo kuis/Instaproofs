@@ -135,9 +135,11 @@
         
         > .title {
           .custom& { display: none; }
-          
           font: bold 1em/1.4 @sans;
           padding: 20px 20px 0 20px;
+          &:empty {
+            padding-top: 12px;
+          }
         }
         
         > .image {

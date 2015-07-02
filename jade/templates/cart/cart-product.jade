@@ -1,0 +1,28 @@
+- var app = require('app');
+- var size, addon;
+- var photo = model.photo;
+.cart-product
+  .head
+    .td.name= model.option.name || model.product.name
+    .td.quantity
+      .qty
+        input(type="number", name="qty", value= model.qty)
+        .minus
+        .plus
+      //- else
+        .no-qty 1
+    .td.price 
+    .td.actions
+      .action.remove
+        .popover.left!= lz("Remove this product from cart")
+    .removed-buttons
+      .button.light.restore!= lz('Restore')
+      .button.light.hide!= lz('Clear')
+  .sizes
+  .removed-cover
+  //- .drag-tip!= lz('Tip: you can drag photos to rearrange them.')
+  //- each size in model.option.required_size_list.models
+    .product-size
+      .product-size-title= size.size.name
+      .product-photos
+    

@@ -18,9 +18,9 @@
       
       .cart-contents  
         .left-column
-          .heading
+          .heading.photos
             .line
-            .label Photos
+            .label!= lz('Photos')
             .line
           .block.photos
                 
@@ -32,6 +32,20 @@
                 .th.quantity!= lz('Qty')
                 .th.price!= lz('Cost')
             .cart-photos
+          
+          .heading.products
+            .line
+            .label!= lz('Products')
+            .line
+          .block.products
+            //- .thead.products
+              .left
+                .th.item!= lz('Item')
+                .th.extras!= lz('Options')
+              .right
+                .th.quantity!= lz('Qty')
+                .th.price!= lz('Cost')
+            .cart-products
               
         .right-column
           .heading

@@ -1,0 +1,37 @@
+.cart-product-photo
+  .img(style="background-image:url("+this.model.photo.thumb_url+")")
+  //- .img
+  
+  .borders.b1
+  .borders.b2
+  .borders.b3
+  .borders.b4
+  .overlay
+    //- .tip!= lz('Drag to move')
+    //- a.button.enlarge(href=this.model.photo.buy_url)!= lz('Enlarge')
+    
+    a.enlarge(href=model.photo.buy_url)
+      .enlarge-icon!= lz('Edit Options')
+      .move-tip!= lz('Drag to sort')
+      
+    .action-icon.remove
+      .popover.left.highlighted!= lz('Remove photo')
+    
+    if optionView.model.size.width && optionView.model.size.height
+      a.action-icon.adjust-crop(href=cropUrl)
+        .popover.right.highlighted!= lz('Adjust crop')
+      
+  .removed-buttons
+    .button.light.hide!= lz('Clear')
+    .button.light.restore!= lz('Restore')
+      
+    
+    //- if optionView.model.size.width && optionView.model.size.height
+    //-   a.button.highlighted.adjust-crop(href=cropUrl)!= lz('Adjust Crop')
+    
+    //- a.button.highlighted.enlarge(href=model.photo.buy_url)!= lz('Enlarge')
+    //- a.button.highlighted.remove!= lz('Remove')
+    //- .button!= lz('Remove')
+    
+  //- Photo
+  

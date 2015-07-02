@@ -1,0 +1,15 @@
+//- - var event = model.collection.parent;
+//- - var imageURL = "/img/pics/thumbs/" + event.img;
+- var imageURL = model.img_url;
+
+- var nl = model.name.length;
+- var titleClass = nl >= 25 ? 'long-'+ Math.min(10, Math.floor((nl-25) / 10)) : '';
+//- - var name = event.categories.length
+
+//- - console.log(model.name, model)
+a.flexgrid-item
+  .bg(style="background-image:url("+ imageURL +");")
+  .spacer
+  .info
+    h3(class= titleClass)= model.name
+    //- h4= model.description

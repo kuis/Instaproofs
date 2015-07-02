@@ -1,0 +1,20 @@
+.product-popup
+  .bg
+  .box
+    //- .close
+    //- .h1= model.name
+    .columns
+      if model.img_url || model.description
+        .left
+          if model.img_url
+            - var bg = "background-image:url("+model.img_url+");";
+            - var pad = "padding-top:"+ (model.img_height / model.img_width * 100) +'%;';
+            .img(style= bg + pad)
+          if model.description
+            .product-description= model.description
+      .right
+        .options
+          
+    .foot
+      .button.cancel.large!= lz('Cancel')
+      .button.save.large.highlighted!= lz('Add to Cart')

@@ -20,6 +20,7 @@
   }
   
   // max-width: 800px;
+  width: 100%;
   display: flex;
   align-items: flex-start;
   
@@ -34,12 +35,20 @@
   // }
   
   .left-column {
-    flex: 1 0 auto;
+    flex: 1 1 auto;
+    // max-width
   }
   .right-column {
     flex: 0 0 200px;
     width: 200px;
     margin-left: 20px;
+  }
+  
+  .no-photos & .heading.photos, .no-photos & .block.photos {
+    display: none;
+  }
+  .no-products & .heading.products, .no-products & .block.products {
+    display: none;
   }
   
   
@@ -276,3 +285,4 @@
 }
 
 @import 'cart-photo';
+@import 'cart-product';

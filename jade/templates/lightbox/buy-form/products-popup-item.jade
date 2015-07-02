@@ -1,0 +1,9 @@
+.purchase-addon-option(class= model.img_url ? 'has-image' : '')
+  .text
+    .title
+      //- .checkbox
+      = model.name 
+    .description= model.description
+  if model.img_url
+    .image-container(style="background-image:url("+model.img_url+")")
+  

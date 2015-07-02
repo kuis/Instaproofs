@@ -1,11 +1,16 @@
 - var ua = require('app/utils/ua');
 - var classes = [];
-- if (model.no_qty) classes.push('no-qty');
+- var noQty = model.size.no_qty || isProductSize;
+- if (noQty) classes.push('no-qty');
+- if (isProductSize) classes.push('product-size');
 .purchase-option(class=classes)
   .head
     .name
-      span.short-name= model.size.display_name
-      span.full-name= model.size.display_name
+      //- span.full-name= model.size.display_name
+      span.short-name
+        = model.size.display_name
+        if cartProduct
+          span.spots-left!= lz('%d/%d left', cartProduct.spotsLeft[model.id], cartProduct.capacity[model.id])
       if model.size.description
         .info
     if model.size.width && model.size.height
@@ -18,8 +23,9 @@
           .crop-cover.right
           .crop-cover.bottom
           .crop-cover.left
+        .borders
     .price.single= model.size.display_price
-    if !model.size.no_qty
+    if !noQty
       .qty
         //- input(type= ua.mobile ? "number" : "text", name="qty", value="0")
         input(type="number", name="qty", value="0")
