@@ -1,0 +1,220 @@
+.favorites-empty-message {
+  display: none;
+  .page.event.empty & {
+    display: block;
+  }
+  
+  text-align: center;
+  padding: 50px 0 55px;
+  > h2 {
+    font: 1.5em/1.4 @sans;
+  }
+  .button {
+    margin-top: 20px;
+  }
+}
+
+.page.event {
+  
+  &.empty {
+    .category-slideshow, .photos, .load-more {
+      display: none;
+    }
+  }
+  
+  &.category {
+    text-align: center;
+    .dark-mode & { bottom: 44px; }
+    .page-footer {
+      // padding-bottom: 64px;
+      padding-bottom: 48px;
+      .dark-mode & {
+        padding-bottom: 0;
+      }
+      .no-transitions & {
+        padding-bottom: 48px !important;
+      }
+    }
+  }
+  &.product {
+    text-align: center;
+    .dark-mode & { bottom: 44px; }
+    .page-footer {
+      // padding-bottom: 64px;
+      padding-bottom: 48px;
+      .dark-mode & {
+        padding-bottom: 0;
+      }
+      .no-transitions & {
+        padding-bottom: 48px !important;
+      }
+    }
+  }
+  // .page-footer {
+  //   padding-bottom: 64px;
+  // }
+  
+  .categories {
+    .event-item {
+      .date {
+        margin-bottom: 0;
+        margin-top: 0.5em;
+      }
+    }
+  }
+  .products {
+    .event-item {
+      .date {
+        margin-bottom: 0;
+        margin-top: 0.5em;
+      }
+    }
+  }
+  
+  .siblings {
+    margin-top: 3em;
+  }
+  
+  .flexgrid {
+    text-align: center;
+  }
+  .category-slideshow, .event-slideshow {
+    display: inline-block;
+    font: 300 .875em/1 @sans;
+    font: 300 1em/1 @sans;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 2em 0 0;
+    &:before {
+      &:extend(.icon);
+      &:extend(.icon.play);
+      vertical-align: -1px;
+      // font-size: 1.5em;
+      margin-right: 2px;
+    }
+  }
+  .event-slideshow {
+    margin: -5em 0 2em;
+  }
+
+  .product-slideshow {
+    display: inline-block;
+    font: 300 .875em/1 @sans;
+    font: 300 1em/1 @sans;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 2em 0 0;
+    &:before {
+      &:extend(.icon);
+      &:extend(.icon.play);
+      vertical-align: -1px;
+      // font-size: 1.5em;
+      margin-right: 2px;
+    }
+  }
+}
+
+.page.event {
+  .heading.event-photos {
+    margin-top: 1em;
+  }
+}
+
+
+.event-category {
+  // padding-bottom: 3em;
+  
+  .heading {
+    margin-top: 1em;
+  }
+  .photos {
+    // background-color: #777;
+    position: relative;
+    margin-top: 2em;
+    transition: height 200ms;
+    overflow: hidden;
+    
+    .hides-header {
+      &:extend(.page.events .load-more all);
+      margin-top: 50px;
+      position: absolute;
+      // bottom: 50px;
+      left: 0;
+      right: 0;
+      top: 0;
+      transition: transform 600ms;
+      
+      display: none;
+      
+      > .label {
+        white-space: nowrap;
+        
+        
+        & > .show-hidden > span {
+          &:before {
+            &:extend(.icon);
+            &:extend(.icon.arrow-down);
+            vertical-align: -1px;
+          }
+        }
+        & > .hide-hidden > span {
+          &:before {
+            &:extend(.icon);
+            &:extend(.icon.arrow-up);
+            vertical-align: -1px;
+          }
+        }
+        & > .hide-hidden {
+          display: none;
+        }
+      }
+    }
+    &.hidden-positioned .hides-header {
+      display: flex !important;
+    }
+    &.hidden-displayed .hides-header {
+      .show-hidden { display: none; }
+      .hide-hidden { display: block; }
+    }
+  }
+  
+  .load-more {
+    &:extend(.page.events .load-more all);
+    margin-top: 1em;
+    
+    // .complete& {
+    //   display: none;
+    // }
+  }
+}
+
+.event-product {
+  // padding-bottom: 3em;
+  
+  .heading {
+    margin-top: 1em;
+  }
+  .photos {
+    position: relative;
+    margin-top: 2em;
+  }
+  
+  .load-more {
+    &:extend(.page.events .load-more all);
+    margin-top: 1em;
+    
+    // .complete& {
+    //   display: none;
+    // }
+  }
+}
+
+@import './thumb';
+
+.fixed-footer.event-category {
+  
+  .content {
+    display: flex;
+    justify-content: space-between;  
+  }
+}

@@ -16,6 +16,8 @@
               a(data-hook='event-name', href='#events/'+ model.id)= model.name
               span &gt;
               span(data-hook='category-name')
+                if isFavPage
+                  != lz('Favorites')
           
         .events-group
           .categories.group-events

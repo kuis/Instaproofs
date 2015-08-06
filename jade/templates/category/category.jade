@@ -2,11 +2,27 @@
   .heading
     //- a.label(href="#categories/"+ model.id)
     .line
-    .label(data-hook='category-name')= model && model.name
+    .label(data-hook='category-name')
+      if model.isFavModel
+        != lz('Favorites')
+      else
+        = model && model.name
+      
     .line
       //- small= 'View all '+ model.img_count +' images'
+  
+  if model.isFavModel
+    .favorites-empty-message
+      h2!= lz("You haven't selected any favorite photos for this event yet.")
+      a.button.large(href='#events/'+model.event.id)!= lz('Back to Event')
+      
   a.category-slideshow!= lz('Slideshow')
   .photos
+    .hides-header
+      .label
+        //- .show-hidden!= lz('Show Photos Hidden From Others')
+        .show-hidden!= lz('Hidden From Others')
+        .hide-hidden!= lz('Hidden From Others')
   .load-more
     .label!= lz('Show More Photos')
     .loader

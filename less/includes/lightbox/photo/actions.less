@@ -163,6 +163,14 @@
         }
       }
     }
+    &.fav {
+      .in-favorites& {
+        color: @active;
+        &:before {
+          &:extend(.icon.heart);
+        }
+      }
+    }
     
     .desktop-ua.not-scrolling &:hover {
       color: @highlighted;

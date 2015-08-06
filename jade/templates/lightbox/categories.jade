@@ -1,3 +1,8 @@
+
+if lightbox.event.favorites.photos.length
+  a.fav-cat(href= lightbox.event.favorites.app_url +'/'+ lightbox.event.favorites.photos.at(0).id,
+            class= active === lightbox.event.favorites ? 'active': '')
+    != lightbox.lz('Favorites')
 each cat in categories
   a(href= cat.app_url +'/'+ cat.photos.at(0).id,
     class= cat === active ? 'active' : '')= cat.name

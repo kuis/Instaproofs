@@ -2,12 +2,14 @@
 - var facebookHref = 'https://www.facebook.com/sharer/sharer.php?u='+url;
 - var twitterHref = 'https://twitter.com/home?status='+url;
 - var linkedinHref = 'https://www.linkedin.com/shareArticle?mini=true&url='+url+'&title=&summary=&source=';
+//- - console.log(model.id)
 .grid-photo
   .image
     //- img(src= model.thumb_url)
   //- .image(style="background-image:url("+ model.thumb_url +")")
   .fill.borders
   .overlay
+    .bg
     a.view-large(href= model.app_url)
       span!= lz('View Larger Image')
     .icons
@@ -18,6 +20,9 @@
       if model.download
         a.icon.download(href= model.url, target="_blank", bypass)
           .tip!= lz('Download')
-      //- .icon.hide: .tip!= lz('Hide Image')
+      .icon.hide: .tip!= lz('Hide')
       .icon.share: .tip!= lz('Share')
+  //- .removal-overlay
+    .button.light.restore!= lz('Restore')
+    .button.light.remove!= lz('Hide')
   //- .image
