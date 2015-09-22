@@ -1,6 +1,7 @@
 //- - var event = model.collection.parent;
 //- - var imageURL = "/img/pics/thumbs/" + event.img;
-- var imageURL = model.img_url;
+- var imageURL = model.img_url || '/img/no-image.png';
+//- - var imageURL = '/img/no-image.png';
 
 - var nl = model.name.length;
 - var titleClass = nl >= 25 ? 'long-'+ Math.min(10, Math.floor((nl-25) / 10)) : '';

@@ -1,6 +1,11 @@
 /*==========================================================================*\
   Previous and Next slide buttons
 \*==========================================================================*/
+#lightbox.disabled-arrows {
+  > .prev, > .next {
+    pointer-events: none;
+  }
+}
 #lightbox > .prev, #lightbox > .next {
   // display: none;
   transition: opacity 300ms;
@@ -9,6 +14,15 @@
   z-index: 10;
   top: 44px;
   bottom: 44px;
+  .fullscreen & {
+    bottom: 54px;
+  }
+  .with-colors-selector& {
+    bottom: 98px;
+    .fullscreen & {
+      bottom: 116px;
+    }
+  }
   
   cursor: pointer;  
   color: rgba(0,0,0, .5);

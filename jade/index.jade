@@ -9,9 +9,9 @@ html(lang='en', class="light-mode")
     meta(name='apple-mobile-web-app-capable', content='yes')
     meta(name='apple-mobile-web-app-status-bar-style', content='black-translucent')
       
-    link(rel='apple-touch-icon', href='img/icon.png')
-    link(rel='shortcut icon', href='img/icon.png')
-    link(rel='icon', href='img/icon.png')
+    link(rel='apple-touch-icon', href='http://media.instaproofs.com/favicon.ico')
+    link(rel='shortcut icon', href='http://media.instaproofs.com/favicon.ico')
+    link(rel='icon', href='http://media.instaproofs.com/favicon.ico')
       
     link(rel='stylesheet', href='css/combined.css')
       
@@ -54,20 +54,22 @@ html(lang='en', class="light-mode")
           var hash = document.location.hash.replace(/^#/, '');
           var image = document.getElementById('splash-image');
           var m = hash.match(/^events\/(\d+)/i);
-          var path = '/img/splash/';
-          var ss = Math.max(screen.height, screen.width);
-          if (ss < 1500) {
-            path += (ss > 1365 ? 1366 : ss > 1023 ? 1024 : 
-                     ss > 799 ? 800 : 600) + '/';
-          }
+          var path;
+          //- var width = screen.width;
+          //- var height = screen.height;
+          var width = document.documentElement.clientWidth;
+          var height = document.documentElement.clientHeight;
           if (m) {
             //- document.getElementById('splash').classList.add('event');
             document.getElementById('splash').className += ' event';
             var i = ((+m[1] - 1) % 17);
-            path += 'img'+ imgList[i] +'.jpg';
+            path = 'http://www.instaproofs.com/api/rest2/img.php?'+
+                'eid='+ m[1] +
+                '&w='+ width +'&h='+ height +'&fill=1';
           }
           else {
-            path += 'global.jpg';
+            path = '/img/splash/global.jpg';
+            //- path += 'global.jpg';
           }
           image.style.backgroundImage = 'url('+ path +')';
           //- document.getElementById('splash').style.display = 'block';  

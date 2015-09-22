@@ -1,0 +1,23 @@
+- var faq = require('app').config.faq;
+.misc-popup.faq
+  .bg
+  .box
+    .scroller
+      .misc-content
+        h1!= lz('Return Policy and Common Questions')
+        if faq['return']
+          h2!= lz('Returns')
+          p!= faq['return']
+        if faq['shipping']
+          h2!= lz('Shipping')
+          p!= faq['shipping']
+        if faq['warranty']
+          h2!= lz('Warranty')
+          p!= faq['warranty']
+        if faq['faq']
+          h2!= lz('Frequents Asked Questions')
+          p!= faq['faq']
+        
+    .foot
+      .button.cancel.large!= lz('Close')
+      //- .button.save.large.highlighted!= lz('Add to Cart')

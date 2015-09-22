@@ -13,7 +13,7 @@
   
   if model.isFavModel
     .favorites-empty-message
-      h2!= lz("You haven't selected any favorite photos for this event yet.")
+      h2!= lz("Your list of favorite photos for this event is empty.")
       a.button.large(href='#events/'+model.event.id)!= lz('Back to Event')
       
   a.category-slideshow!= lz('Slideshow')

@@ -1,0 +1,49 @@
+- var moment = require('moment');
+- var date;
+- var formatMoney = require('app/models/base-model').prototype.formatMoney;
+if data.code === 200
+  .details
+    if data.date
+      .row
+        .left!= lz('Order Date:')
+        .right= moment(data.date).format('lll')
+    if data.url
+      .row
+        .left!= lz('Order Receipt:')
+        .right
+          a(href=data.url, target='_blank')!= lz('Click to View')
+    if data.status
+      .row
+        .left!= lz('Status:')
+        .right= data.status
+    if data.ship_date
+      .row
+        .left!= lz('Ready/Shipped:')
+        .right= moment(data.ship_date).format('lll')
+    if data.address
+      .row
+        .left!= lz('Shipping Address:')
+        .right!= data.address
+  .amounts
+    .row
+      .left!= lz('Subtotal:')
+      .right= formatMoney(data.subtotal)
+    .row
+      .left!= lz('Shipping:')
+      .right= formatMoney(data.shipping)
+    .row
+      .left!= lz('Tax:')
+      .right= formatMoney(data.tax)
+    .row
+      .left!= lz('Discount:')
+      .right= formatMoney(data.discount)
+    .row
+      .left!= lz('Total:')
+      .right= formatMoney(data.total)
+      
+else if data.code === 404 
+  .error-message
+    != lz('No orders were found matching the provided criteria.')
+else
+  .error-message
+    != lz('Unknown error. Please try again later.')

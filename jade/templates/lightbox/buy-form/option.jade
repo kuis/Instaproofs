@@ -1,14 +1,19 @@
+- var app = require('app');
 - var ua = require('app/utils/ua');
 - var classes = [];
-- var noQty = model.size.no_qty || isProductSize;
+//- - var noQty = model.size.no_qty || isProductSize;
+- var noQty = model.size.no_qty;
 - if (noQty) classes.push('no-qty');
 - if (isProductSize) classes.push('product-size');
+- var _colorId = model.color_id || colorId;
 .purchase-option(class=classes)
   .head
     .name
       //- span.full-name= model.size.display_name
       span.short-name
         = model.size.display_name
+        if _colorId !== 7 
+          = ' ('+ app.colors.get(_colorId).short_name +')'
         if cartProduct
           span.spots-left!= lz('%d/%d left', cartProduct.spotsLeft[model.id], cartProduct.capacity[model.id])
       if model.size.description
@@ -16,7 +21,7 @@
     if model.size.width && model.size.height
       //- .crop(title="Adjust Crop")
       //- .crop(title="Click to adjust crop", style="background-image:url("+ photo.model.thumb_url +")")
-      .crop(style="background-image:url("+ photo.model.micro_url +")")
+      .crop(style="background-image:url("+ photo.model.getUrl(_colorId) +")")
         .crop-tip!= lz('Click to adjust crop')
         .crop-covers
           .crop-cover.top

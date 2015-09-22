@@ -4,6 +4,8 @@
   .head
     .name
       span.short-name= model.name
+      if model.description
+        .tip
     .price.single= model.display_price
     if !model.no_qty
       .qty
@@ -15,7 +17,7 @@
       .checkbox
     .price.final= model.formatMoney(0)
   .wrap
-    if model.description
+    //- if model.description
       .description= model.description
     if model.allow_notes
       .notes

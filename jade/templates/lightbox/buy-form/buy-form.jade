@@ -1,6 +1,16 @@
+- var app = require('app');
 .buy-form: .buy-form-content
   .options-wrapper
     .scroller
+      if model.pricing.colors_count > 1
+        .variants
+          .variant-button
+            .variant-name.all-variants(data-color-id='0')!= lz('All')
+          each color, id in model.pricing.colors
+            .variant-button
+              .variant-name(data-color-id=id, class=app.colors.get(id).prefix)
+                = app.colors.get(id).name
+        
       .products-head 
         .button.light.add-product!= lz("Add album or product")
       .products-prints

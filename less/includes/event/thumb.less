@@ -2,7 +2,7 @@
   cursor: pointer;
   position: absolute;
   // transform: translateZ(0);
-  overflow: hidden;
+  // overflow: hidden;
   transition: transform 600ms, opacity, 400ms;
   // &.animated-position {
   //   transition: transform 300ms;
@@ -80,6 +80,7 @@
     .mobile-ua & {
       // display: none;
     }
+    
     
     > .view-large {
       flex: 1;
@@ -263,9 +264,6 @@
         }
         .hidden&.hide .tip { color: @active; }
         
-        &.share:before {
-          &:extend(.icon.share);
-        }
         
         &.active:before {
           color: @active;
@@ -282,6 +280,70 @@
           // &:before { color: @highlighted; }
           .tip {
             opacity: 1;
+          }
+        }
+        
+        &.share {
+          // border-bottom-right-radius: 5px;
+          // border-bottom-left-radius: 5px;
+          // position: relative;
+          // bottom: 3px;
+          > .tip {
+            display: none !important;
+          }
+          &:before {
+            &:extend(.icon.share);
+          }
+          &:hover {
+            background: rgba(0,0,0,.9);
+            .sharing-overlay {
+              display: flex;
+              flex-flow: row wrap;
+              align-items: flex-end;
+              justify-content: flex-end;
+            }
+          }
+        }
+        .sharing-overlay {
+          color: @white;
+          background: rgba(0,0,0,.9);
+          // height: 600px;
+          // width: 100px;
+          max-width: 200px;
+          width: 150px;
+          z-index: 100000;
+          // white-space: nowrap;
+          // padding: 5px;
+          position: absolute;
+          bottom: 44px;
+          right: 0;
+          padding-top: 6px;
+          
+          border-top-right-radius: 5px;
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
+          
+          display: none;
+          
+          .social-button {
+            display: inline-block;
+            width: 50px;
+            height: 44px;
+            line-height: 44px;
+            
+            color: @white;
+            &:hover { color: @highlighted; }
+            // padding: 5px;
+            &:before {
+              &:extend(.icon);
+            }
+            
+            &.facebook:before { &:extend(.icon.facebook); }
+            &.twitter:before { &:extend(.icon.twitter); }
+            &.googleplus:before { &:extend(.icon.googleplus); }
+            &.instagram:before { &:extend(.icon.instagram); }
+            &.pinterest:before { &:extend(.icon.pinterest); }
+            &.stumbleupon:before { &:extend(.icon.stumbleupon); }
           }
         }
       }

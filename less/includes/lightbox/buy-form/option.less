@@ -1,15 +1,27 @@
 /*==========================================================================*\
   Purchase option in the buy form
 \*==========================================================================*/
+.purchase-option {
+  // background-color: rgba(255,255,255,0.9);
+  display: none;
+  // opacity: 0;
+  // pointer-events: none;
+  &.displayed { 
+    display: block;
+    // opacity: 1;
+    // pointer-events: auto;
+  }
+    
+}
 .purchase-option, .product-option {
   
   width: 100%;
   height: 44px;
   // overflow: hidden;
   border-top: rgba(0,0,0,0.1) 1px dashed;
-  &:first-child {
-    border-top: none;
-  }
+  // &:first-child {
+  //   border-top: none;
+  // }
   
   // &.selected {
   //   // background: rgba(0,0,0, .1);
@@ -41,10 +53,18 @@
   
   transition: opacity 200ms, transform 300ms;
   
+  .instant-positioning & {
+    transition: none;
+  }
+  
   &.product-size {
     position: static;
     .head {
       padding-left: 30px;
+      padding-right: 14px;
+    }
+    .qty {
+      margin-left: 15px;
     }
     &.fulfilled .spots-left {
       color: @active !important;

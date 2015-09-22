@@ -22,7 +22,8 @@
     "moment": "^2.8.3",
     "sprintf-js": "^1.0.2",
     "underscore": "~1.6.0",
-    "velocity-animate": "^1.1.0"
+    "velocity-animate": "^1.1.0",
+    "xhr": "^2.0.4"
   },
   "devDependencies": {
     "URIjs": "^1.14.1",

@@ -1,0 +1,228 @@
+@keyframes misc-in {
+  0% { opacity: 1; transform: translateY(-100%); }
+  100% { opacity: 1; }
+}
+@keyframes misc-out {
+  0% { opacity: 1;  }
+  100% { opacity: 1; transform: translateY(-100%); }
+}
+
+.misc-popup {
+  &:extend(.fill);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 30px 15px;
+  
+  z-index: 12;
+  
+  > .bg {
+    &:extend(.fill);
+    background: rgba(0,0,0,.3);
+    animation: fadeIn 250ms both;
+    .hidden& {
+      animation: fadeOut 250ms both;
+    }
+  }  
+  
+  > .box {
+    background: rgba(255,255,255,.98);
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    max-height: 90%;
+    padding: 20px;
+    
+    .animated-height& {
+      transition: max-height 300ms;
+    }
+    
+    .contact& {
+      max-width: 450px;
+    }
+    .order-status& {
+      max-width: 650px;
+    }
+    
+    animation: misc-in 200ms 50ms ease-out both;
+    .hidden& {
+      animation: misc-out 200ms ease-in both;
+    }
+    
+    box-shadow: 0 0 4px rgba(0,0,0,.4);
+    
+    > .scroller {
+      &:extend(.fill);
+      bottom: 74px;
+      overflow: auto;
+      
+      > .misc-content {
+        padding: 20px;
+      }
+    }
+    
+    h1 {
+      font: 300 32px/1.4 @sans;
+      text-align: center;
+    }
+    h2 {
+      font: 300 24px/1.4 @sans;
+      margin-top: 20px;
+    }
+    p {
+      margin-top: 7px;
+    }
+    
+    .contact-links {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      > a {
+        text-align: center;
+        display: block;
+      }
+    }
+    
+    .contact-form {
+      padding-top: 10px;
+      display: flex;
+      flex-flow: column nowrap;
+    }
+    .order-status-form {
+      padding-top: 10px;
+      // margin-right: 15px;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: stretch;
+      input {
+        // box-sizing: border-box;
+        width: 60%;
+      }
+      input.name {
+        width: 40%;
+        margin-right: 15px;
+      }
+    }
+    
+    input, textarea {
+      // width: 100%;
+      font: 300 16px @sans;
+      display: block;
+      margin-top: 15px;
+      border: #ccc 1px solid;
+      outline-color: @highlighted;
+    }
+    input {
+      height: 30px;
+      padding-left: 7px;
+    }
+    textarea {
+      resize: none;
+      
+      padding: 7px;
+      height: 120px;
+    }
+  }
+  
+  .order-details {
+    display: flex;
+    .error-message {
+      padding: 20px 0 0;
+    }
+    .details {
+      padding: 20px 0 0;
+      flex-grow: 1;
+      // border-right: rgba(100, 100, 100, 0.2) 1px solid;
+      // width: 75%;
+      .row {
+        display: flex;
+        margin-top: 4px;
+        .left {
+          width: 170px;
+          text-align: right;
+          font-weight: bold;
+          margin-right: 10px;
+        }
+        .right {
+          flex-grow: 1;
+        }
+      }
+    }
+    .amounts {
+      padding: 20px 0 0;
+      width: 190px;
+      .row {
+        display: flex;
+        margin-top: 4px;
+        .left {
+          width: 120px;
+          text-align: right;
+          font-weight: bold;
+          margin-right: 10px;
+        }
+        .right {
+          flex-grow: 1;
+        }
+      }
+    }
+  }
+  
+  
+  .foot {
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    right: 20px;
+    height: 44px;
+    border-top: rgba(100,100,100,0.2) 1px solid;
+    
+    padding: 15px 0;
+    
+    display: flex;
+    justify-content: space-between;
+    
+    .faq& {
+      justify-content: flex-end;
+    }
+  }
+  
+  .h1 {
+    font: 300 24px/1.4 @oswald;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 13px;
+  }
+  
+  .save {
+    transition: opacity 200ms;
+    .sent& {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+  
+  .success-message {
+    height: 44px;
+    font: 700 16px/44px @sans;
+    text-align: right;
+    position: absolute;
+    top: 15px;
+    right: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 200ms;
+    
+    &:before {
+      &:extend(.icon);
+      &:extend(.icon.check);
+      margin-right: 3px;
+      vertical-align: -1px;
+    }
+    
+    .sent& {
+      pointer-events: auto;
+      opacity: 1;
+    }
+  }
+}

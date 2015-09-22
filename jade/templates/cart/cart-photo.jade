@@ -3,7 +3,7 @@
 - var photo = model.photo;
 .cart-photo
   .image
-    .img(style="background-image:url("+photo.thumb_url +")")
+    .img(style="background-image:url("+photo.getThumbUrl(model.color_id) +")")
       .overlay
         a.view-large(href= model.url)
           span!= lz('Edit')

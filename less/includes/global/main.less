@@ -352,6 +352,33 @@ main {
     padding: 0 20px;
     font: 300 18px/44px @sans;
   }
+  
+  &.with-loader {
+    position: relative;
+    > .loader {
+      top: 7px;
+      left: 50%;
+      margin-left: -15px; 
+      opacity: 0;
+      transition: opacity 200ms;
+    }
+    > span {
+      transition: opacity 200ms;
+    }
+    &.highlighted > {
+      .loader {
+        &:after {
+          border-color: @highlighted;
+        }
+      }
+    }
+    
+    &.loading {
+      > span { opacity: 0; }
+      > .loader { opacity: 1; }
+    }
+  }
+  
 }
 
 

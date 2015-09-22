@@ -1,0 +1,104 @@
+.lightbox-photo .images .variants {
+  // transition: opacity 200ms, transform 300ms;
+  // transition: transform 300ms;
+  transition: opacity 300ms, transform 300ms;
+  font: 300 1.2em/1.2 @oswald;
+  // padding: 1em;
+  text-transform: uppercase;
+  animation: fadeIn 500ms forwards;
+  // text-shadow: 0 0 3px #000;
+  
+  .buy-form-displayed & {
+    transform: translateY(200%) translateX(50%);
+    opacity: 0;
+    animation: fadeOut 300ms forwards;
+  }
+  
+  // position: absolute;
+  bottom: 44px;
+  left: 0;
+  right: 0;
+  z-index: 7;
+  
+  // flex: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  // margin-bottom: -24px;
+  // padding: 10px 0;
+  
+  box-sizing: border-box;
+  width: 100%;
+  
+  // &.fake {
+  //   visibility: hidden;
+  //   margin-bottom: 0;
+  //   margin-top: -24px;
+  // }
+  
+  .fullscreen &, .mobile-ua & {
+    position: absolute;
+    bottom: 64px;
+    padding: 0 15px;
+    left: 0;
+    right: 0;
+  }
+  
+  // display: none;
+  
+  > .text {
+    // display: inline-block;
+    box-sizing: border-box;
+    height: 54px;
+    line-height: 40px;
+    box-sizing: border-box;
+    padding: 14px 15px 0;
+    white-space: nowrap;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
+    // border-bottom-left-radius: 5px;
+    // border-bottom-right-radius: 5px;
+    border-radius: 5px;
+    
+    .fullscreen &, .mobile-ua & {
+      width: auto;
+      height: auto;
+      padding: 15px;
+      margin: 0 auto;
+      line-height: 1.2;
+      white-space: normal;
+      overflow: visible;
+      text-overflow: none;
+      background: rgba(255,255,255,0.8);
+      border-radius: 5px;
+      .dark-mode& {
+        background: rgba(0,0,0,0.8);
+      }
+    }
+    
+    > .variant-button {
+      color: @grey-text;
+      display: inline-block;
+      white-space: nowrap;
+      &:after {
+        content: '•';
+        padding: 0 10px;
+      }
+      &:last-child:after {
+        content: none;
+      }
+      > .variant-name {
+        display: inline;
+        .original&.original { color: @black-text !important; cursor: default; }
+        .black&.black { color: @black-text !important; cursor: default; }
+        .sepia&.sepia { color: @black-text !important; cursor: default; }
+        &:hover {
+          cursor: pointer;
+          color: @highlighted;
+        }
+      }
+    }
+    
+    // background: rgba(0,0,0, .8);
+  }
+}
