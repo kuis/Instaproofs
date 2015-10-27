@@ -2,13 +2,16 @@
 - if (model.showcase) classes.push('showcased');
 - if (model.locked) classes.push('locked');
   
-- var imageURL = model.locked ? model.thumb_blur_url : model.thumb_url;
+//- - var imageURL = model.locked ? model.thumb_blur_url : model.thumb_url;
+- var imageURL = model.thumb_url;
 
 - var nl = model.name.length; // progressively shrink long titles
 - var titleClass = nl >= 25 ? 'long-'+ Math.min(10, Math.floor((nl-25) / 10)) : '';
 
 a.flexgrid-item.event-item(class= classes, href= "#events/"+ model.id)
-  .bg(style="background-image:url("+ imageURL +");")
+  //- .bg(style= model.display_image ? ("background-image:url("+ imageURL +");") : "background-color: #444;")
+  .bg(style= imageURL ? ("background-image:url("+ imageURL +");") : "background-color: #444;")
+  .border
   .spacer
   .info
     h3(class= titleClass)= model.name

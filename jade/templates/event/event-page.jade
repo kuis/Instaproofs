@@ -8,24 +8,26 @@
           h1(data-hook='event-name')= model.name
           .page-path 
             //- span.wide-only!= lz('You are here:')
-            a(href="#")!= lz('Events')
-            span &gt;
+            //- a(href="#")!= lz('Events')
+            //- span &gt;
             if pageType === 'event'
-              span(data-hook='event-name')= model.name
+              //- span(data-hook='event-name')= model.name
             else
               a(data-hook='event-name', href='#events/'+ model.id)= model.name
               span &gt;
               span(data-hook='category-name')
+        .sales-info
           
         .flexgrid
           //- if model.categories.length > 1 || true
-          .heading.event-photos
+          //- .heading.event-photos
             .line
             .label!= lz('Photos')
             .line
           //- a.event-slideshow!= lz('Slideshow')
             
           .categories.items
+            
           .heading    
             .line
             .label!= lz('Products')

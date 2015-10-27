@@ -21,7 +21,11 @@
     &:hover, &:active {
       > .bg {
         // border: rgba(0,0,0, .5) 5px dotted;
-        box-shadow: inset 0 0 0 8px rgba(120,120,120,.5);
+        // box-shadow: inset 0 0 0 8px rgba(120,120,120,.5);
+        // border: rgba(120,120,120,.1) 8px solid;
+      }
+      > .border {
+        border: rgba(120,120,120,.5) 8px solid;
       }
     }
   }
@@ -32,10 +36,20 @@
   transition: opacity 400ms;
   
   > .bg {
+    box-sizing: border-box;
     background: center/cover no-repeat;
+    background-clip: border-box;
     box-shadow: inset 0 0 0 1px rgba(100,100,100,0.2);
+    // border: rgba(100,100,100,0.2) 8px solid;
     &:extend(.fill);
     z-index: 1;
+  }
+  
+  > .border {
+    &:extend(.fill);
+    z-index: 1;
+    transition: border-color 300ms;
+    border: rgba(100,100,100,0) 8px solid;
   }
   
   > .spacer {

@@ -1,6 +1,32 @@
+- var config = require('app').config;
 .page.events.complete.reloading.inactive: .page-scroller: .page-scroll
   .page-content
     .content 
+      //- if config.logo_url
+      a.homepage-logo-link(href=config.logo_link)
+        img.homepage-logo(src=config.logo_url)
+      .events-selector
+        .loader
+        .inner
+          .events-filter 
+            .selected-filter.all!= lz('All events')
+            .selected-filter.showcased!= lz('Showcased events')
+            .selected-filter.current!= lz('Current events')
+            .selected-filter.upcoming!= lz('Upcoming events')
+            .dropdown
+              a.filter-option.all!= lz('All')
+              a.filter-option.showcased!= lz('Showcased')
+              a.filter-option.current!= lz('Current')
+              a.filter-option.upcoming!= lz('Upcoming')
+          |  sorted by 
+          .events-sorting
+            .selected-sorting.date!= lz('Date')
+            .selected-sorting.name!= lz('Name')
+            .selected-sorting.type!= lz('Type')
+            .dropdown
+              a.sort-option.date!= lz('Date')
+              a.sort-option.name!= lz('Name')
+              a.sort-option.type!= lz('Type')
       .header
         .filters: .inner
           a.showcased(href="#", data-filter="showcased") 
@@ -27,6 +53,7 @@
           .icon
           .loader.grey-bg
       .events-list
+      .empty-message
       .load-more
         .label!= lz('Load More Events')
         .loader

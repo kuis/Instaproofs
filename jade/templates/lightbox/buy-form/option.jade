@@ -5,6 +5,7 @@
 - var noQty = model.size.no_qty;
 - if (noQty) classes.push('no-qty');
 - if (isProductSize) classes.push('product-size');
+- if (model.photo && model.photo.pricing && model.photo.pricing.bulk_pricing_type === 'compound') classes.push('bulk-compound');
 - var _colorId = model.color_id || colorId;
 .purchase-option(class=classes)
   .head
@@ -18,6 +19,9 @@
           span.spots-left!= lz('%d/%d left', cartProduct.spotsLeft[model.id], cartProduct.capacity[model.id])
       if model.size.description
         .info
+    span.bulk-pricing
+      .bulk-tip!= lz('Bulk pricing available')
+    span.discount
     if model.size.width && model.size.height
       //- .crop(title="Adjust Crop")
       //- .crop(title="Click to adjust crop", style="background-image:url("+ photo.model.thumb_url +")")
@@ -29,7 +33,10 @@
           .crop-cover.bottom
           .crop-cover.left
         .borders
-    .price.single= model.size.display_price
+    //- .price.single= model.size.display_price
+    .price.single
+      span.original-price= model.display_original_price
+      span.discounted-price= model.display_price
     if !noQty
       .qty
         //- input(type= ua.mobile ? "number" : "text", name="qty", value="0")
@@ -38,5 +45,8 @@
         .plus
     else
       .checkbox
-    .price.final= model.formatMoney(0)
+    .price.final 
+      span.base-final-price= model.formatMoney(0)
+      span.discounted-final-price= model.formatMoney(0)
+    
   .addons

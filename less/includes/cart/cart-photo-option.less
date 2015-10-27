@@ -58,6 +58,19 @@
       @media (max-width: 690px) {
         width: 100%;
       }
+      
+      > .discount {
+        display: none;
+        .discounted& { display: inline-block; }
+        background: @highlighted;
+        color: @white;
+        font: bold 12px/14px @sans;
+        // height: 18px;
+        padding: 3px;
+        border-radius: 10px;
+        // vertical-align: super;
+        margin-left: 4px;
+      }
       // border-right: #ddd 1px dotted;
     }
     &.extras {

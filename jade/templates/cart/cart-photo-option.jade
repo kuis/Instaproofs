@@ -1,7 +1,9 @@
 - var app = require('app');
 .cart-photo-item
   .left
-    .td.name= model.size.display_name
+    .td.name
+      = model.size.display_name
+      span.discount
     .td.extras 
       .extras-list
       .no-extras!= lz('No options selected')

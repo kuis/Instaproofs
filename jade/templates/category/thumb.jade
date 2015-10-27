@@ -10,6 +10,7 @@
   .image
     //- img(src= model.thumb_url)
   //- .image(style="background-image:url("+ model.thumb_url +")")
+  .hidden-label!= lz('Hidden')
   .fill.borders
   .overlay
     .bg
@@ -20,10 +21,10 @@
       //- .icon.cart: .tip!= lz('Buy More')
       .icon.fav: .tip!= lz('To Favorites')
       //- .icon.fav: .tip!= lz('Unfavorite')
-      if model.download
-        a.icon.download(href= model.url, target="_blank", bypass)
+      if model.download_url && model.event.allowedDownload
+        a.icon.download(href= model.download_url, target="_blank", bypass)
           .tip!= lz('Download')
-      .icon.hide: .tip!= lz('Hide')
+      .icon.hide(class= model.event.allowedHide ? '' : 'noop'): .tip!= lz('Hide')
       //- http://demo.instaproofs.com/socialBookmark.php?sb=1&url=http%3A%2F%2Fdemo.instaproofs.com%2Fshare.php%3Fid%3D1050631%26v3%3D1%26pid%3D270323662&pid=270323662&title=Jhosmara+and+Chris+-+JoAndChris-0002
       //- http://demo.instaproofs.com/socialBookmark.php?sb=1&url=http%3A%2F%2Fdemo.instaproofs.com%2Fshare.php%3Fid%3D1050631%26v3%3D1%26pid%3D270323662&pid=270323662&title=Jhosmara+and+Chris+-+JoAndChris-0002
       if config.socialEnabled

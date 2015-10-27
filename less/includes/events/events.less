@@ -9,10 +9,156 @@
     opacity: 0;
   }
   
+  .homepage-logo {
+    display: block;
+    margin: 15px auto 0;
+  }
+  
+  .events-group:first-child .group-header {
+    margin-top: 48px;
+  }
+  &.reloading .group-header {
+    opacity: 0;
+    .search-active& {
+      opacity: 1;
+    }
+  }
+  
   /*==========================================================================*\
     Header bar with filtering and sorting 
   \*==========================================================================*/
+  .events-selector {
+    font: 400 18px/1.4 @sans;
+    font: 300 .9375em/38px @sans;
+    text-align: center;
+    height: 38px;
+    margin: 15px 0 15px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    &:before {
+      content: '';
+      width: 100%;
+      height: 1px;
+      background: @grey-lines;
+      position: absolute;
+      top: 19px;
+      left: 0;
+    }
+    
+    
+    > .loader {
+      top: 53px;
+      opacity: 0;
+      transition: opacity 100ms;
+      .reloading& {
+        transition: opacity 150ms 1s;
+        opacity: 1;
+        .search-active& {
+          opacity: 0;
+        }
+      }
+    }
+    
+    > .inner {
+      background: @white;
+      padding: 0 15px;
+      z-index: 2;
+      
+      .search-active& {
+        display: none;
+      }
+    }
+    .events-filter, .events-sorting {
+      cursor: default;
+      font-weight: 400;
+      text-transform: uppercase;
+      display: inline-block;
+      position: relative;
+      
+      .selected-filter {
+        display: none;
+        .filter-all&.all { display: inline; }
+        .filter-showcased&.showcased { display: inline; }
+        .filter-current&.current { display: inline; }
+        .filter-upcoming&.upcoming { display: inline; }
+      }
+      .selected-sorting {
+        display: none;
+        .sort-date&.date { display: inline; }
+        .sort-name&.name { display: inline; }
+        .sort-type&.type { display: inline; }
+      }
+      
+      &:hover > .dropdown {
+        display: block;
+      }
+      .dropdown {
+        display: none;
+        position: absolute;
+        left: -15px;
+        top: 38px;
+        color: @white;
+        background: @black;
+        text-align: left;
+        padding: 8px 15px;
+        border-radius: 3px;
+        
+        .no-selector-dropdowns& {
+          display: none !important;
+        }
+        
+        z-index: 1000;
+        
+        .filter-option, .sort-option {
+          display: block;
+          cursor: pointer;
+          height: 38px;
+          color: @white;
+          &:hover {
+            color: @highlighted;
+          }
+        }
+        .filter-all& .filter-option.all { display: none; }
+        .filter-showcased& .filter-option.showcased { display: none; }
+        .filter-current& .filter-option.current { display: none; }
+        .filter-upcoming& .filter-option.upcoming { display: none; }
+        
+        .sort-date& .sort-option.date { display: none; }
+        .sort-name& .sort-option.name { display: none; }
+        .sort-type& .sort-option.type { display: none; }
+      }
+    }
+    .events-filter:before, .events-sorting:after {
+      &:extend(.icon);
+      &:extend(.icon.arrow-down);
+      font-size: 16px;
+      vertical-align: -2px;
+      position: absolute;
+      width: 20px;
+      height: 38px;
+      line-height: 38px;
+      background-color: @white;
+      top: 0;
+    }
+    .events-filter:before {
+      text-align: right;
+      left: -20px;
+    } 
+    .events-sorting:after {
+      text-align: left;
+      right: -20px;
+    }
+    .events-sorting {
+      .dropdown {
+        left: auto;
+        right: -15px;
+        text-align: right;
+      }
+    }
+  }
   .header {
+    display: none;
     height: 100px;
     margin-top: 3em;
     margin-bottom: 6em;
@@ -165,6 +311,20 @@
         padding-left: 10px;
       }
     }
+  }
+  
+  
+  /*==========================================================================*\
+    Empty List Message
+  \*==========================================================================*/
+  .empty-message {
+    display: none;
+    .empty& { display: block; }
+    
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    padding: 50px 0;
   }
   
   

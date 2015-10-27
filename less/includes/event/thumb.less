@@ -13,6 +13,10 @@
     // transform: 
   }
   
+  .hidden-label {
+    display: none;
+  }
+  
   &.hidden {
     z-index: 2;
     transition: transform 600ms, opacity 200ms;
@@ -21,6 +25,21 @@
     .hidden-positioned & {
       transform: none;
       opacity: 1;
+    }
+    
+    .hidden-label {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 30px;
+      width: 100%;
+      font: 300 1em/30px @sans;
+      text-align: center;
+      text-transform: uppercase;
+      color: @white;
+      background: fadeout(@black, 20%);
     }
   }
   // animation: fadeIn 300ms;
@@ -51,7 +70,7 @@
   }
   
   > .borders {
-    box-shadow: inset 0 0 0 1px rgba(100,100,100,0.2);
+    box-shadow: inset 0 0 0 1px rgba(100,100,100,0.1);
   }
   
   > .overlay {
@@ -193,6 +212,10 @@
         line-height: 44px;
         padding: 0 10px;
         position: relative;
+        
+        &.noop {
+          display: none !important;
+        }
         
         > .tip {
           opacity: 0;

@@ -1,5 +1,11 @@
 .cart-product-photo
-  .img(style="background-image:url("+this.model.photo.thumb_url+")")
+  .img(style="background-image:url("+this.model.photo.getThumbUrl(model.color_id)+")")
+    .qty
+      //- .minus
+      .count
+        span.x= 'x'
+        span.qty-value= optionModel.qty
+      //- .plus
   //- .img
   
   .borders.b1
@@ -12,7 +18,7 @@
     
     a.enlarge(href=model.photo.buy_url)
       .enlarge-icon!= lz('Edit Options')
-      .move-tip!= lz('Drag to sort')
+      //- .move-tip!= lz('Drag to sort')
       
     .action-icon.remove
       .popover.left.highlighted!= lz('Remove photo')
@@ -20,6 +26,8 @@
     if optionView.model.size.width && optionView.model.size.height
       a.action-icon.adjust-crop(href=cropUrl)
         .popover.right.highlighted!= lz('Adjust crop')
+        
+  
       
   .removed-buttons
     .button.light.hide!= lz('Clear')

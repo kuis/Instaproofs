@@ -20,6 +20,16 @@
   justify-content: center;
   text-align: center;
   
+  &.buy-only {
+    display: none;
+    &.current {
+      display: flex;
+      opacity: 0 !important;
+      animation: fadeIn 300ms 300ms forwards;
+    }
+  }
+  
+  
   transform: translateX(100%) translateZ(0); 
   &.current {
     // transform: none;
@@ -90,7 +100,7 @@
       
       .title, .variants {
         opacity: 0;
-        display: none;
+        display: none !important;
       }
     }
     // background-size: auto;
@@ -122,6 +132,30 @@
         // .light-mode & {
         //   box-shadow: inset 0 0 0 1px rgba(100,100,100,0.2);
         // }
+      }
+      
+      .photo-name {
+        display: none;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        box-sizing: border-box;
+        padding: 10px;
+        
+        font: 300 22px/1.2 @oswald;
+        text-transform: uppercase;
+        background: rgba(255,255,255,0.8);
+        z-index: 6;
+        
+        // opacity: 0;
+        transition: opacity 300ms;
+        .cropping-mode& {
+          display: none;
+        }
+        &:hover {
+          opacity: 1;
+        }
       }
       
       > img {

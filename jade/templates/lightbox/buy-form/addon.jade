@@ -1,14 +1,49 @@
 - var ua = require('app/utils/ua');
 - var classes = [];
+- if (model.description) classes.push('with-description');
 - if (model.options) classes.push('no-qty');
+- if (model.discount) classes.push('discount-row');
+- if (model.bulkQty) classes.push('bulk-pricing-row');
+- var bulkQty = typeof model.bulkQty === 'number' ? (model.bulkQty || 1) : null;
 .purchase-addon(class=classes)
   .main
-    if model.options.length > 1
+    if model.discount
+      .name.discount
+        //- != this.lz('Discount until %s', model.discount.expires)
+        //- =model.discount.description
+    else if bulkQty
+      .name.bulk-pricing
+        if model.bulkType === 'fixed'
+          if model.bulkMaxQty
+            if bulkQty === model.bulkMaxQty
+              != this.lz('Bulk of %d', bulkQty)
+            else
+              != this.lz('Bulk of %d to %d', bulkQty, model.bulkMaxQty)
+          else
+            != this.lz('Bulk of %d or more', bulkQty)
+        else 
+          if model.bulkMaxQty
+            if bulkQty === model.bulkMaxQty
+              != this.lz('%s item', bulkQty)
+            else
+              != this.lz('Items %d through %d', bulkQty, model.bulkMaxQty)
+          else
+            != this.lz('Items from %s onward', bulkQty)
+        //- =model.discount.description
+    else if model.options.length > 1
       .expand
       .name= model.selected_name
     else
       .checkbox
       .name= model.options.length ? model.options.at(0).name : model.name
-    .price.single= model.display_price
-  if model.description
-    .info
+    if model.description
+      .info
+    - var singleClass = [];
+    - if (model.discount) singleClass.push('discount-amount');
+    - if (typeof model.bulkDiscount === 'number') singleClass.push('bulk-discount');
+    - if (typeof model.bulkPrice === 'number') singleClass.push('bulk-price');
+    .price.single(class= singleClass)= model.display_price
+    
+  .addon-qty= qty
+  .price.final(class= model.discount ? 'total-discount' : 'total-price')
+  

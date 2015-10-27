@@ -5,7 +5,7 @@
   .image
     .img(style="background-image:url("+photo.getThumbUrl(model.color_id) +")")
       .overlay
-        a.view-large(href= model.url)
+        a.view-large(href= model.photo.buy_url)
           span!= lz('Edit')
     //- .photo-actions
       .button.edit-photo

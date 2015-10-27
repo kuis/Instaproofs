@@ -63,6 +63,13 @@
     bottom: 0;
     // background: rgba(255,255,255,1);
   }
+  #splash-thumb-image {
+    &:extend(.fill);
+    top: 100px;
+    @media (max-width: 450px) { top: 50px; }
+    background: center center no-repeat @black;
+    background-size: cover;
+  }
   > .image {
     position: absolute;
     top: 100px;
@@ -70,7 +77,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: center center no-repeat @black;
+    // background: center center no-repeat @black;
+    background: center center no-repeat;
     background-size: cover;
     
     display: flex;

@@ -1,4 +1,6 @@
-.lightbox-photo .images .variants {
+.lightbox-photo .images .variants,
+.lightbox-photo .images .title {
+  display: none;
   // transition: opacity 200ms, transform 300ms;
   // transition: transform 300ms;
   transition: opacity 300ms, transform 300ms;
@@ -21,7 +23,9 @@
   z-index: 7;
   
   // flex: 0;
-  display: flex;
+  .name-displayed& {
+    display: flex;
+  }
   justify-content: center;
   align-items: flex-start;
   // margin-bottom: -24px;

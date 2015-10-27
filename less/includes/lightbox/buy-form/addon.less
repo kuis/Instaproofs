@@ -13,6 +13,9 @@
   
   position: relative;
   
+  display: flex;
+  
+  
   > .main {
     display: flex;
     align-items: center;
@@ -20,24 +23,70 @@
     line-height: 44px;
     padding: 0 10px 0 10px;
     cursor: pointer;
+    
+    // &:hover {
+    //   color: @highlighted;
+    // }
+    .discount-row&, .bulk-compound .bulk-pricing-row& {
+      cursor: auto;
+      // &:hover {
+      //   color: inherit;
+      // }
+    }
+    
+    // margin-right: 34px;
+    // .with-description& {
+    //   margin-right: 0;
+    // }
+    
     // background: #0f0;
   }
-  > .info {
-    position: absolute;
-    right: -34px;
-    top: 0;
+  .addon-qty {
+    color: @grey-text;
+    width: 40px;
+    text-align: right;
+    line-height: 44px;
+    
+    visibility: hidden;
+    .show-totals.active& { visibility: visible; }
+    .bulk-compound.bulk-pricing-active .discount-row& {
+      visibility: hidden !important;
+    }
+    .no-qty & {
+      display: none;
+    }
+    
+    &:before {
+      content: 'x';
+      display: inline-block;
+      // vertical-align: 1px;
+      margin-right: 3px;
+      position: relative;
+      top: -1px;
+    }
+    &:after {
+      content: '=';
+      display: inline-block;
+      margin-left: 4px;
+      // vertical-align: 3px;
+    }
+  }
+  .info {
+    // position: absolute;
+    // right: -34px;
+    // top: 0;
     
     box-sizing: border-box;
-    width: 34px;
+    width: 30px;
     height: 100%;
-    padding: 0 0 0 5px;
-    margin-left: 3px;
+    padding: 0 3px 0 3px;
+    // margin-left: 3px;
     
     // background: #f00;
     cursor: pointer;
     font-size: 16px;
     line-height: 44px;
-    text-align: left;
+    text-align: right;
     // vertical-align: -1px;
     
     color: rgba(0,0,0,.7);
@@ -70,6 +119,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
     padding: 0 3px;
+    .discount-row& {
+      cursor: default;
+    }
   }
   
   .checkbox { // no-qty addons
@@ -107,6 +159,50 @@
   .price {
     width: 50px;
     text-align: right;
+    line-height: 44px;
+    color: @grey-text;
+    white-space: nowrap;
+    
+    // .bulk-pricing-row& {
+    //   color: @grey-text;
+    // }
+    .active& {
+      color: @highlighted;
+      font-weight: 400;
+    }
+    .discounted .discount-row&, .bulk-pricing-row.active& {
+      
+      // color: @highlighted;
+      color: @active;
+      font-weight: 400;
+      
+      &.bulk-price {
+        color: @highlighted;
+      }
+    }
+    
+    .bulk-compound.bulk-pricing-active .discount-row&.single {
+      visibility: hidden !important;
+    }
+    
+    &.final {
+      visibility: hidden;
+      .show-totals.active& { visibility: visible; }
+      width: 55px;
+      // margin-left: 15px;
+      // margin-left: 79px;
+      margin-left: 8px;
+      margin-right: 68px;
+      .no-qty & {
+        margin-right: 42px;
+      }
+      
+      .bulk-compound& {
+        color: @highlighted;
+      }
+      // margin-right: 31px;
+      // text-align: left;
+    }
   }
   
   &.active {
