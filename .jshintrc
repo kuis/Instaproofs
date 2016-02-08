@@ -13,6 +13,15 @@
   // in the Enviroments section below 
   "predef": {
     
+    // Mocha and Chai vars for unit tests
+    "after": false,
+    "afterEach": false,
+    "beforeEach": false, 
+    "before": false, 
+    "context": false,
+    "describe": false, 
+    "expect": false, 
+    "it": false
   },
 
   // This option prohibits the use of bitwise operators such as ^ (XOR), | (OR) 

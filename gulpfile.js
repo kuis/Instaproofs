@@ -1,10 +1,11 @@
 "use strict";
 
 var gulp = require('gulp');
-var _ = require('underscore');
 // var aliasify = require('aliasify');
+var assign = require('lodash.assign');
 var browserify = require('browserify');
 var buffer = require('gulp-buffer');
+var connectLivereload = require('connect-livereload');
 var exit = require('gulp-exit');
 var gulpif = require('gulp-if');
 var jade = require('gulp-jade');
@@ -25,7 +26,7 @@ catch (e) {
   lrHost = 'localhost'; 
   deployDest = './build/production';
 }
-var minifyCSS = require('gulp-minify-css');
+var minifyCSS = require('gulp-cssnano');
 var path = require('path');
 var prefix = require('gulp-autoprefixer');
 var serve = require('gulp-serve');
@@ -44,7 +45,7 @@ var buildDest = './build/production';
   Less compilation and Autoprefixing
 \*==========================================================================*/
 gulp.task('css', function() { // compile and prefix CSS with sourcemaps
-  return gulp.src(['less/*.less', '!less/**/_*'])
+  return gulp.src(['node_modules/app/index.less'])
     .pipe(gulpif(dev, sourcemaps.init()))
     
     // compile Less
@@ -55,7 +56,7 @@ gulp.task('css', function() { // compile and prefix CSS with sourcemaps
     
     // Autoprefix
     .pipe(prefix(
-      ["> 1%", "last 2 versions", "android >= 4", "Explorer >= 9"], 
+      ["> 1%", "last 2 versions", "android >= 4", "Explorer >= 10"], 
       (dev ? { cascade: true, map: true } : {})
     ).on("error", handleError))
     
@@ -63,6 +64,7 @@ gulp.task('css', function() { // compile and prefix CSS with sourcemaps
     .pipe(gulpif(!dev, minifyCSS()))
     .pipe(gulp.dest(buildDest +'/css'))
     .pipe(gulpif(dev, livereload()));
+    console.log(buildDest +'/css');
 });
 
 
@@ -71,14 +73,14 @@ gulp.task('css', function() { // compile and prefix CSS with sourcemaps
   Jade compilation
 \*==========================================================================*/
 gulp.task('html', function() { // compile and render index.html
-  return gulp.src(['jade/*.jade', '!jade/**/_*'])
+  return gulp.src(['index.jade'])
     .pipe(jade({ pretty: !!dev }).on("error", handleError))
     .pipe(gulp.dest(buildDest))
     .pipe(gulpif(dev, livereload()));
 });
 
-gulp.task('templates', function() { // compile templates
-  templatizer('jade/templates', 'node_modules/app/templates.js');
+gulp.task('templates', function(done) { // compile templates
+  templatizer('node_modules/app', 'node_modules/app/templates.js', done);
 });
 
 
@@ -111,13 +113,13 @@ function bundleJS(bundler) {
 gulp.task('watch', function() { // watch and build 
   dev = true;
   buildDest = './build/dev';
-  gulp.watch(['less/**/*.less'], ['css']);
-  gulp.watch(['jade/*.jade'], ['html']);
-  gulp.watch(['jade/templates/**/*.jade'], ['templates']);
+  gulp.watch(['node_modules/app/**/*.less'], ['css']);
+  gulp.watch(['node_modules/app/index.jade'], ['html']);
+  gulp.watch(['node_modules/app/**/*.jade'], ['templates']);
   livereload.listen();
   
   var bundler = watchify(browserify('./app.js', 
-    _.extend(watchify.args, { debug: true, })
+    assign(watchify.args, { debug: true, })
   ));
   bundler.on('update', function () {
     return bundleJS(bundler);
@@ -135,8 +137,8 @@ gulp.task('watch', function() { // watch and build
   Serve files at localhost:3000 with injection of live-reload snippet
 \*==========================================================================*/
 gulp.task('serve', serve({
-  root: 'build/dev',
-  middleware: require('connect-livereload')({
+  root: 'build',
+  middleware: connectLivereload({
     src: 'http://'+ (lrHost || 'localhost') +':35729/livereload.js?snipver=1'
   }),
 }));
