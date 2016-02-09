@@ -1,7 +1,9 @@
 node_modules/*
 !node_modules/app
 node_modules/app/templates.js
-build
+build/dev
+build/production/*
+!build/production/img
 local-settings.js
 *disc.html
 
