@@ -74,7 +74,7 @@ gulp.task('css', function() { // compile and prefix CSS with sourcemaps
 \*==========================================================================*/
 gulp.task('html', function() { // compile and render index.html
   return gulp.src(['index.jade'])
-    .pipe(jade({ pretty: !!dev }).on("error", handleError))
+    .pipe(jade({ pretty: !!dev || true }).on("error", handleError))
     .pipe(gulp.dest(buildDest))
     .pipe(gulpif(dev, livereload()));
 });
