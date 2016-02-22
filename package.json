@@ -1,8 +1,8 @@
 {
   "private": true,
   "dependencies": {
-    "@lukekarrys/jade-runtime": "^1.11.1",
     "ampersand-events": "^1.1.1",
+    "ampersand-state": "4.8.2",
     "ampersand-model": "^6.0.2",
     "ampersand-rest-collection": "^5.0.0",
     "ampersand-router": "^3.0.2",
