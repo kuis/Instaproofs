@@ -15,7 +15,11 @@ html(lang='en', class="light-mode")
       
     link(rel='stylesheet', href='css/index.css')
       
-    <script>window.SITE_URL = 'http://demo.instaproofs.com';</script>
+    script.
+      window.SITE_URL = 'http://demo.instaproofs.com';
+      if (window.localStorage && window.localStorage.appUrl) {
+        window.SITE_URL = window.localStorage.appUrl;
+      }
       
     //- <script src="//use.typekit.net/cdw2kfe.js"></script>
     //- <script>try{Typekit.load();}catch(e){}</script>
@@ -42,7 +46,7 @@ html(lang='en', class="light-mode")
         //- var height = screen.height;
         var width = document.documentElement.clientWidth;
         var height = document.documentElement.clientHeight;
-        height -= width <= 450 ? 50 : 100;
+        height -= width <= 700 || height <= 700 ? 50 : 100;
         if (m) {
           //- document.getElementById('splash').classList.add('event');
           slashEl.className += ' event';
