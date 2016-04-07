@@ -53,3 +53,6 @@ local-settings.js
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# WebStorm
+.idea
