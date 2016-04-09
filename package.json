@@ -2,10 +2,10 @@
   "private": true,
   "dependencies": {
     "ampersand-events": "^1.1.1",
-    "ampersand-state": "4.8.2",
     "ampersand-model": "^6.0.2",
     "ampersand-rest-collection": "^5.0.0",
     "ampersand-router": "^3.0.2",
+    "ampersand-state": "4.8.2",
     "ampersand-view": "^9.0.2",
     "coreh-mousetrap": "^2.0.0",
     "dom-shims": "^0.1.4",
@@ -22,6 +22,7 @@
     "lodash.min": "^3.4.0",
     "lodash.takeright": "^3.0.0",
     "moment": "^2.11.1",
+    "querystring": "^0.2.0",
     "sprintf-js": "^1.0.3",
     "xhr": "^2.2.0"
   },
