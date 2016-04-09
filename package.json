@@ -7,6 +7,7 @@
     "ampersand-router": "^3.0.2",
     "ampersand-state": "4.8.2",
     "ampersand-view": "^9.0.2",
+    "axios": "^0.9.1",
     "coreh-mousetrap": "^2.0.0",
     "dom-shims": "^0.1.4",
     "fastclick": "^1.0.6",
