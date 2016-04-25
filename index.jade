@@ -35,10 +35,10 @@ html(lang='en', class="light-mode")
     
     script.
       var skipSplash = window.localStorage && localStorage.skipSplash === '1';
-      var paypalConfirm = 
-        document.location.hash.indexOf('paypal_confirmation') > -1;
+      //- var paypalConfirm = 
+      //-   document.location.hash.indexOf('paypal_confirmation') > -1;
       if (!skipSplash) {
-        if (!paypalConfirm) document.documentElement.className = 'locked';
+        //- if (!paypalConfirm) document.documentElement.className = 'locked';
         var hash = document.location.hash.replace(/^#/, '');
         var slashEl = document.getElementById('splash');
         var image = document.getElementById('splash-image');
