@@ -1,5 +1,7 @@
 node_modules/*
 !node_modules/app
+!node_modules/ampersand-collection-view
+node_modules/ampersand-collection-view/node_modules/*
 node_modules/app/templates.js
 build/dev
 build/production/*
