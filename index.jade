@@ -21,6 +21,15 @@ html(lang='en', class="light-mode")
         window.SITE_URL = window.localStorage.appUrl;
       }
       
+      var aosp = window.navigator.userAgent.match(/Android.*AppleWebKit\/([\d.]+)/); 
+      window.isAOSP = aosp && aosp[1] < 537;
+      
+      function ignoreBrowserWarning() {
+        document.getElementById('old-browser').style.display = 'none';
+        if (window.localStorage) window.localStorage.ignoreBrowserWarning = 1;
+        return false;
+      }
+      
     //- <script src="//use.typekit.net/cdw2kfe.js"></script>
     //- <script>try{Typekit.load();}catch(e){}</script>
       
@@ -32,8 +41,16 @@ html(lang='en', class="light-mode")
     
   body
     include ./node_modules/app/body-contents.jade
+    include ./node_modules/app/old-browser.jade
     
     script.
+      if (window.isAOSP) {
+        if (!window.localStorage || 
+            !window.localStorage.ignoreBrowserWarning) {
+          document.getElementById('old-browser').style.display = 'block';
+        }
+      }
+      
       var skipSplash = window.localStorage && localStorage.skipSplash === '1';
       //- var paypalConfirm = 
       //-   document.location.hash.indexOf('paypal_confirmation') > -1;
