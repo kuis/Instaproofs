@@ -61,7 +61,7 @@ gulp.task('css', function() { // compile and prefix CSS with sourcemaps
     ).on("error", handleError))
     
     .pipe(gulpif(dev, sourcemaps.write()))
-    .pipe(gulpif(!dev, minifyCSS()))
+    // .pipe(gulpif(!dev, minifyCSS()))
     .pipe(gulp.dest(buildDest +'/css'))
     .pipe(gulpif(dev, livereload()));
     console.log(buildDest +'/css');
