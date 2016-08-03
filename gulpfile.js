@@ -56,7 +56,7 @@ gulp.task('css', function() { // compile and prefix CSS with sourcemaps
     
     // Autoprefix
     .pipe(prefix(
-      ["> 1%", "last 2 versions", "android >= 4", "Explorer >= 10"], 
+      ["> 1%", "last 3 versions", "android >= 4", "Explorer >= 10"], 
       (dev ? { cascade: true, map: true } : {})
     ).on("error", handleError))
     
