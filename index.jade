@@ -29,15 +29,6 @@ html(lang='en', class="light-mode")
         if (window.localStorage) window.localStorage.ignoreBrowserWarning = 1;
         return false;
       }
-      
-    //- <script src="//use.typekit.net/cdw2kfe.js"></script>
-    //- <script>try{Typekit.load();}catch(e){}</script>
-      
-    <!--[if lt IE 10]>
-    <script>window.ie9 = true;</script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/classlist/2014.01.31/classList.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/ie9.css">
-    <![endif]-->
     
   body
     include ./node_modules/app/body-contents.jade
@@ -47,7 +38,11 @@ html(lang='en', class="light-mode")
       if (window.isAOSP) {
         if (!window.localStorage || 
             !window.localStorage.ignoreBrowserWarning) {
-          document.getElementById('old-browser').style.display = 'block';
+          document.addEventListener("DOMContentLoaded", function() {
+            var el = document.getElementById('old-browser');
+            if (!el) alert('No legacy overlay found');
+            else el.style.display = 'block';
+          });
         }
       }
       
