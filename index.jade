@@ -20,9 +20,12 @@ html(lang='en', class="light-mode")
       if (window.localStorage && window.localStorage.appUrl) {
         window.SITE_URL = window.localStorage.appUrl;
       }
-      
-      var aosp = window.navigator.userAgent.match(/Android.*AppleWebKit\/([\d.]+)/); 
+      //- var userAgent = 'Mozilla/5.0 (Linux; U; Android 4.3; en-us; GT-I9300 '+
+      //-     'Build/JSS15J) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 '+
+      //-     'Mobile Safari/534.30';
+      var aosp = window.navigator.userAgent.match(/Android.*AppleWebKit\/([\d.]+)/);
       window.isAOSP = aosp && aosp[1] < 537;
+      //- if (window.isAOSP) alert('AOSP detected');
       
       function ignoreBrowserWarning() {
         document.getElementById('old-browser').style.display = 'none';
