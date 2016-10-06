@@ -43,7 +43,13 @@ npm install --save lodash-debounce@3.x
 
 Make sure you have node.js installed on your system: [https://nodejs.org](https://nodejs.org)
 
-After you cloned the repo, `cd` to it in your terminal.
+Next, clone the repo and `cd` to it in your terminal.
+
+Make sure you have `gulp-cli` installed on your system:
+
+```
+npm install --global gulp-cli
+```
 
 To fetch all external dependencies and put them into `node_modules` folder, run:
 
@@ -51,17 +57,23 @@ To fetch all external dependencies and put them into `node_modules` folder, run:
 npm install
 ```
 
-If you're on a Mac, you may need to do this with root priveleges:
+Then dedupe the project like this:
+
+```
+npm dedupe
+```
+
+And lastly, navigate to `node_modules/ampersand-collection-view` in your terminal and run `npm install` once again from that location.
+
+
+#### Mac Users
+
+If you're on a Mac, you may need to have root priveleges to run `npm`:
 
 ```
 sudo npm install
 ```
 
-Then, make sure you have `gulp-cli` installed on your system:
-
-```
-npm install --global gulp-cli
-```
 
 ### Development Mode
 
